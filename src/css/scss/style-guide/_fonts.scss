@@ -1,0 +1,24 @@
+// IMPORTS
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+@font-face {
+  font-family: 'saxMono';
+  src: url('../fonts/saxMono.woff') format('woff'),
+       url('../fonts/saxMono.ttf') format('truetype'),
+       url('../fonts/saxMono.svg#saxMono') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'saxmono';
+  src: url('../fonts/saxmono.eot');
+  src: url('../fonts/saxmono.woff2') format('woff2'),
+       url('../fonts/saxmono.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+// VARS
+
+$lato: 'Lato', sans-serif;
+$saxmono: 'saxmono', monospace;

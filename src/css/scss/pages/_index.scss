@@ -1,0 +1,243 @@
+/////////////////////////
+//                     //
+//    - CONTENT -      //
+//                     //
+/////////////////////////
+
+body {
+    font-family: $lato;
+    color: $black;
+    & a {
+        text-decoration: none;
+    }
+}
+
+.index {
+    margin: 70px auto 0 auto;
+    width: 100%;
+    max-width: 1440px;
+
+    .hero-main {
+        width: 100%;
+        height: auto;
+        margin-bottom: 50px;
+
+        &__wrap {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        &__title {
+            width: 100%;
+            margin: 20px auto;
+            & h1 {
+                text-align: center;
+                font-size: 50px;
+            }
+        }
+
+        &__logo {
+            margin: 50px auto;
+            width: 100%;
+            text-align: center;
+            flex: auto;
+        }
+
+        &__image {
+            flex: auto;
+            width: 80%;
+            max-width: 450px;
+            max-height: 450px;
+        }
+
+        &__info {
+            width: 100%;
+            margin: 20px auto;
+            & h2 {
+                text-align: center;
+                font-size: 40px;
+            }
+        }
+    }
+
+    .admins {
+        margin: 50px 0;
+        width: 100%;
+
+        &__wrap {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        &__title {
+            width: 100%;
+            margin: 20px auto 40px auto;
+            text-align: center;
+            & h2 { font-size: 30px; }
+        }
+
+        &__admin {
+            width: calc(100%/3);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        &__name,
+        &__job {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 24px;
+        }
+    }
+
+    .cta {
+        margin: 50px 0;
+        width: 100%;
+
+        &__wrap {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        &__title {
+            width: 100%;
+            margin: 20px auto 40px auto;
+            text-align: center;
+            & h2 { font-size: 30px; }
+        }
+
+        &__item {
+            font-size: 24px;
+            padding: 5px 0;
+            &::before {
+                font-family: 'FontAwesome';
+                display: inline-block;
+                position: absolute;
+                margin-left: -30px;
+                vertical-align: middle;
+                content: '\f121';
+            }
+        }
+    }
+
+    .links {
+        margin: 50px 0;
+        width: 100%;
+
+        &__wrap {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        &__title {
+            width: 100%;
+            margin: 20px auto 40px auto;
+            text-align: center;
+            & h2 { font-size: 30px; }
+        }
+
+        &__item {
+            width: 25%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        &__logo {
+            width: 100%;
+            text-align: center;
+            flex: auto;
+        }
+
+        &__image {
+            flex: auto;
+            width: 100%;
+            height: auto;
+            max-width: 265px;
+        }
+
+        &__name {
+            width: 100%;
+            & h2 {
+                text-align: center;
+                font-size: 24px;
+            }
+        }
+    }
+
+    .break {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: block;
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+        -webkit-margin-start: auto;
+        -webkit-margin-end: auto;
+    }
+}
+
+/////////////////////////
+//                     //
+//   - BREAKPOINTS -   //
+//                     //
+/////////////////////////
+
+@media screen and (max-width: 960px) {
+    .index {
+        width: 96%;
+        .admins__admin,
+        .links__item { width: 50%; }
+        .hero-main__title h1 { font-size: 40px; }
+        .hero-main__info h2 { font-size: 30px; }
+        .admins__title h2,
+        .cta__title h2,
+        .links__title h2 { font-size: 24px; }
+        .cta__item {
+            font-size: 18px;
+            margin-bottom: 10px;
+            padding-left: 30px;
+        }
+        .links__name h2 { font-size: 18px; }
+    }
+    .header {
+        .header__links { width: 100px; }
+        .header__link {
+            display: none;
+        }
+        .header__menu { display: flex !important; }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .index {
+        .admins__admin {
+            margin: 20px auto;
+            width: 100%;
+        }
+    }
+    .header__logo { font-size: 24px; }
+}
+
+@media screen and (max-width: 580px) {
+
+
+}

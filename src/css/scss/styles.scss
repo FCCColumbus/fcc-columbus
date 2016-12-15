@@ -1,0 +1,43 @@
+
+// ==================================================
+//
+//
+//         		Free Code Camp Columbus
+// 
+//
+// ==================================================
+
+// ---------------
+// 		BASE
+// ---------------
+@import 'base/mixins';
+@import 'base/reset';
+@import 'base/libs/font-awesome';
+
+// ---------------------
+// 		STYLE GUIDE
+// ---------------------
+@import 'style-guide/vars';
+@import 'style-guide/colors';
+@import 'style-guide/fonts';
+@import 'style-guide/buttons';
+
+// ------------------
+// 		GLOBAL
+// ------------------
+@import 'base/global';
+@import 'global/page-header';
+@import 'global/page-footer';
+
+// ------------------
+// 		SNIPPETS
+// ------------------
+@import 'pages/index.scss';
+
+// ==================================================
+//
+//
+//         		Free Code Camp Columbus
+// 
+//
+// ==================================================
