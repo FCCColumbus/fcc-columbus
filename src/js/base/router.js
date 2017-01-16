@@ -11,11 +11,8 @@ FCCC.router = (function(FCCC, $){
 		///////////////////////
 		// Conditional Start //
 		///////////////////////
-		if(body.hasClass('index')) {
-			//index module inits here
-			// FCCC.index.init();
-		}
-
+		if (body.hasClass('index')){ FCCC.index.init(); }
+		if (body.hasClass('login')){ FCCC.signin.init(); }
 	}
 
 	return {

@@ -1,0 +1,63 @@
+.modal-development {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.9);
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.5s ease-in-out;
+
+	.content {
+		width: 450px;
+		height: 200px;
+		background-color: #eeeeee;
+		border: 2px solid $green;
+		border-radius: 8px;
+
+		&__wrap {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		&__title {
+			font-size: 30px;
+			text-align: center;
+		}
+
+		&__info {
+			padding: 20px 10px;
+			text-align: center;
+		}
+
+		&__btn {
+			text-align: center;
+			button {
+				width: 150px;
+				height: 50px;
+				font-size: 18px;
+				outline: none;
+				border-radius: 8px;
+                background: transparent;
+                border: 2px solid $green;
+                color: $green;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    color: $white;
+                    background: $green;
+                    border: none;
+                }
+			}
+		}
+	}
+}
+
+.modal--hide {
+	opacity: 0;
+	z-index: -1;
+}

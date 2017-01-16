@@ -3,7 +3,7 @@ FCCC.header = (function(FCCC, $){
 	var dropdown = false;
 
 	function bind() {
-		console.log('index init');
+		console.log('header init');
 
 		$('.js__header-menu').on('click', function(){ toggleNav(); });
 	}

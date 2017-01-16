@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/fccc.min.css">
 </head>
 
-<body class="signin"> 
+<body class="login"> 
 <header>
   <div class="header">
     <div class="header__wrap">
@@ -23,7 +23,7 @@
         <a class="nav__link" href="page.calendar.html"><div class="header__link">Calendar</div></a>
         <a class="nav__link" href="page.sign-in.html"><div class="header__link">Sign In</div></a>
         <div type="button" class="header__menu js__header-menu">Menu</div>
-      </div>    
+      </div>
     </div>
   </div>
   <div class="headerdropdown">
@@ -36,13 +36,91 @@
   </div>
 </header>
   <!-- BODY CONTENT  -->
+<div class="signin">
+  <div class="user">
+    <div class="user__wrap">
 
+      <div class="user__logo">
+        <img src="../assets/fccc-logo.png" alt="Free Code Camp Columbus logo">
+      </div>
 
+      <div class="js--user__login">
+        <div class="user__title">
+          <h1>Sign In</h1>
+        </div>
+        <div class="user__form">
+          <form method="" action="">
+            <input id="userName" type="text" name="name" placeholder="Username">
+            <label class="sr-only" for="userName">Username</label>
+            <input id="userPassword" type="text" placeholder="Password">
+            <label class="sr-only" for="userPassword">Password</label>
+            <input type="submit" id="loginCheck" value="SUBMIT">
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="hidden" name="_next" value="#">
+          </form>
+        </div>
+        <div class="user__info">
+          <p>Not a member? <a class="user__link js--signup" href="#">Sign up now</a></p>
+          <a class="user__link" href="#">Forgot Password?</a>
+        </div>
+      </div>
 
-  <div class="global__wrap">
-    <div class="global__title">Under Construction</div>
+      <div class="js--user__signup user--none">
+        <div class="user__title">
+          <h1>Sign Up</h1>
+        </div>
+        <div class="user__form">
+          <form method="" action="">
+            <input id="userName" type="text" name="name" placeholder="Username">
+            <label class="sr-only" for="userName">Username</label>
+
+            <input id="userEmail" type="text" name="name" placeholder="Email">
+            <label class="sr-only" for="userName">Email</label>
+
+            <input id="userPassword" type="text" placeholder="Password">
+            <label class="sr-only" for="userPassword">Password</label>
+
+            <input id="userConfirm" type="text" placeholder="Confirm Password">
+            <label class="sr-only" for="userConfirm">Confirm Password</label>
+
+            <div class="user__terms">
+                <input name="terms" id="termsCheck" value="1" type="checkbox">
+                <label class="terms">I accept the <a href="#">Terms and Conditions</a></label>
+            </div>
+
+            <input type="submit" id="loginCheck" value="SUBMIT">
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="hidden" name="_next" value="#">
+          </form>
+        </div>
+        <div class="user__info">
+          <p>Already a member? <a class="user__link js--signin" href="#">Sign in now</a></p>
+        </div>
+      </div>
+
+    </div>
   </div>
+</div>
 
+<div class="modal-development">
+  <div class="content">
+    <div class="content__wrap">
+
+      <div class="content__title">
+        <h1>This page is under development</h1>
+      </div>
+
+      <div class="content__info">
+        <p>Some or all areas may not function as expected. Please assume this page is not ready for general use.</p>
+      </div>
+
+      <div class="content__btn">
+        <button>Okay</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
 
