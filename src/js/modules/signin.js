@@ -9,6 +9,8 @@ FCCC.signin = (function(FCCC,$){
 	function bindEvents(){
 		console.log('signin init');
 
+		$('#ndex-modal').click();
+
 		$signup.on('click', function(e){
 			e.preventDefault();
 			signUp();
