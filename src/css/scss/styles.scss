@@ -2,14 +2,15 @@
 // ==================================================
 //
 //
-//         		Free Code Camp Columbus
+//              Free Code Camp Columbus
 // 
 //
 // ==================================================
 
 // ---------------
-// 		BASE
+//      BASE
 // ---------------
+
 @import 'base/mixins';
 @import 'base/reset';
 @import 'base/libs/font-awesome';
@@ -17,31 +18,34 @@
 @import 'base/libs/remodal-default';
 
 // ---------------------
-// 		STYLE GUIDE
+//      STYLE GUIDE
 // ---------------------
+
 @import 'style-guide/vars';
 @import 'style-guide/colors';
 @import 'style-guide/fonts';
 @import 'style-guide/buttons';
 
 // ------------------
-// 		GLOBAL
+//      GLOBAL
 // ------------------
-// @import 'base/global';
-@import 'global/page-header';
-@import 'global/page-footer';
-@import 'global/modal-dev';
+
+@import 'base/global';
+@import 'modules/page-header';
+@import 'modules/page-footer';
+@import 'modules/modal-dev';
 
 // ------------------
-// 		SNIPPETS
+//      MODULES
 // ------------------
-@import 'pages/index.scss';
-@import 'pages/signin.scss';
+
+@import 'modules/index.scss';
+@import 'modules/signin.scss';
 
 // ==================================================
 //
 //
-//         		Free Code Camp Columbus
+//              Free Code Camp Columbus
 // 
 //
 // ==================================================
