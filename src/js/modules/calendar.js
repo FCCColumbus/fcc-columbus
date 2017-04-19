@@ -1,5 +1,5 @@
 FCCC.calendar = (function(FCCC, $){
-  var key = 'SN4VKNK4YDOHUIYCOY6L';
+  var key = 'oauthkey';
   var apiHeaders = new Headers();
   apiHeaders.append("Authorization", "Bearer " + key);
 
