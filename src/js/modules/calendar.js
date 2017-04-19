@@ -1,9 +1,9 @@
 FCCC.calendar = (function(FCCC, $){
-  var key = 'addappkeyhere';
+  var key = 'enterappkey';
   var apiHeaders = new Headers();
   apiHeaders.append("Authorization", "Bearer " + key);
 
-  var rootAddress = 'https://www.eventbriteapi.com/v3/users/me/events/';
+  var rootAddress = 'https://www.eventbriteapi.com/v3/users/me/events/?status=live';
   var setHeaders = { headers: apiHeaders };
   var apiRequest = new Request(rootAddress, setHeaders);
 
@@ -24,7 +24,6 @@ FCCC.calendar = (function(FCCC, $){
         var dateFormat = (date.getMonth() + 1) + "/" + date.getDate();
         var url = event.url;
 
-        console.log(event);
         return '<div class="events__card"><a class="clickable" target="_blank" href="' + url + '"></a>' + '<div class="events__card__description"><h3 class="events__card__date">' +
                 dateFormat + '</h3>' + '<h1 class="events__card__title">' + name + '</h1></div></div>';
       });
