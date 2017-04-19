@@ -1,7 +1,6 @@
 FCCC.router = (function(FCCC, $){
 
 	function init() {
-
 		var $body = $('body');
 
 		///////////////////////
