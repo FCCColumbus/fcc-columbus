@@ -8,14 +8,12 @@
 	justify-content: center;
 	align-items: center;
 	transition: all 0.5s ease-in-out;
-
 	.content {
 		width: 450px;
 		height: 200px;
 		background-color: #eeeeee;
 		border: 2px solid $green;
 		border-radius: 8px;
-
 		&__wrap {
 			width: 100%;
 			height: 100%;
@@ -23,17 +21,14 @@
 			flex-direction: column;
 			justify-content: center;
 		}
-
 		&__title {
 			font-size: 30px;
 			text-align: center;
 		}
-
 		&__info {
 			padding: 20px 10px;
 			text-align: center;
 		}
-
 		&__btn {
 			text-align: center;
 			button {
@@ -48,7 +43,7 @@
                 transition: all 0.2s ease-in-out;
                 cursor: pointer;
                 &:hover {
-                    color: $white;
+                    color: $solidWhite;
                     background: $green;
                     border: none;
                 }

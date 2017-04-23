@@ -31,16 +31,17 @@
 // ------------------
 
 @import 'base/global';
-@import 'modules/page-header';
-@import 'modules/page-footer';
+@import 'modules/header';
+@import 'modules/footer';
 @import 'modules/modal-dev';
 
 // ------------------
 //      MODULES
 // ------------------
 
-@import 'modules/index.scss';
-@import 'modules/signin.scss';
+@import 'modules/index';
+@import 'modules/signin';
+@import 'modules/signup';
 
 // ==================================================
 //

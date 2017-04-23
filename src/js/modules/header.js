@@ -1,21 +1,16 @@
 FCCC.header = (function(FCCC, $){
 
-	var dropdown = false;
+	var $menu = $('.js__header-menu'),
+		$navMobile = $('.header__dropdown');
 
 	function bind() {
-		console.log('header init');
-
-		$('.js__header-menu').on('click', function(){ toggleNav(); });
+		$menu.on('click', function(){
+			toggleNav();
+		});
 	}
 
 	function toggleNav() {
-		if (!dropdown){
-			$('.headerdropdown').addClass('headerdropdown--show');
-			dropdown = true;
-		} else {
-			$('.headerdropdown').removeClass('headerdropdown--show');
-			dropdown = false;
-		}
+		$navMobile.toggleClass('header--show');
 	}
 
 	function init() {
