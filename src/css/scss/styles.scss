@@ -3,7 +3,7 @@
 //
 //
 //              Free Code Camp Columbus
-// 
+//
 //
 // ==================================================
 
@@ -39,6 +39,9 @@
 //      MODULES
 // ------------------
 
+@import 'modules/index.scss';
+@import 'modules/signin.scss';
+@import 'modules/calendar.scss';
 @import 'modules/index';
 @import 'modules/signin';
 @import 'modules/signup';
@@ -47,6 +50,6 @@
 //
 //
 //              Free Code Camp Columbus
-// 
+//
 //
 // ==================================================

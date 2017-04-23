@@ -1,7 +1,6 @@
 FCCC.router = (function(FCCC, $){
 
 	function init() {
-
 		var $body = $('body');
 
 		///////////////////////
@@ -20,6 +19,7 @@ FCCC.router = (function(FCCC, $){
 
 		if ($body.hasClass('index')){ FCCC.index.init(); }
 		if ($body.hasClass('login')){ FCCC.signin.init(); }
+		if ($body.hasClass('calendar')){ FCCC.calendar.init(); }
 	}
 
 	return {
