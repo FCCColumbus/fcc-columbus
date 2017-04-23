@@ -5,7 +5,6 @@
 var clientName = 'fccc',
 	projectName = clientName.toLowerCase(),
 	jsfiles = [
-				'src/js/libs/jquery-2.1.4.min.js',
 				'src/js/libs/*.js',
 				'src/js/base/define.js',
 				'src/js/modules/*.js',
@@ -176,7 +175,7 @@ gulp.task('css:post_build', ['git_check'], function(){
 		.pipe(notify({ title: clientName + ' CSS', message: 'CSS Refreshed' }));
 });
 
-var watchSrc = ['assets/**/*', '!assets/*.js', '!assets/*.css', 'layout/**/*.*', 'snippets/**/*.*', 'sections/**/*.*', 'templates/**/*.*', '/*', 'index.html'];
+var watchSrc = ['assets/**/*', '!assets/*.js', '!assets/*.css', 'pages/**/*.*', 'snippets/**/*.*', 'templates/**/*.*', '**.*'];
 
 gulp.task('git_check', function(){
 	var current_branch = gitStatus.branch();
@@ -211,6 +210,7 @@ gulp.task('browser-sync', function(){
 		},
 		// Or switch them all off in one go
 		ghostMode: true,
+		// open browser window on 'gulp'
 		open: true
 	});
 });

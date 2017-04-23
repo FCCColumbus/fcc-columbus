@@ -31,17 +31,23 @@
 // ------------------
 
 @import 'base/global';
-@import 'modules/page-header';
-@import 'modules/page-footer';
+@import 'modules/header';
+@import 'modules/footer';
 @import 'modules/modal-dev';
 
 // ------------------
 //      MODULES
 // ------------------
 
+<<<<<<< HEAD
 @import 'modules/index.scss';
 @import 'modules/signin.scss';
 @import 'modules/calendar.scss';
+=======
+@import 'modules/index';
+@import 'modules/signin';
+@import 'modules/signup';
+>>>>>>> 03ae0d7bc1a7fe5476296b7143d937d6a515c85b
 
 // ==================================================
 //

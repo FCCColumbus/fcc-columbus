@@ -4,25 +4,28 @@
 //                     //
 /////////////////////////
 
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
 @font-face {
-  font-family: 'saxMono';
-  src: url('../fonts/saxMono.woff') format('woff'),
-       url('../fonts/saxMono.ttf') format('truetype'),
-       url('../fonts/saxMono.svg#saxMono') format('svg');
+  font-family: 'lato';
+  src: url('Lato-Regular.eot');
+  src: url('Lato-Regular.woff2') format('woff2'),
+       url('Lato-Regular.woff') format('woff'),
+       url('Lato-Regular.ttf') format('truetype'),
+       url('Lato-Regular.svg#Lato-Regular') format('svg'),
+       url('Lato-Regular.eot?#iefix') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'saxmono';
-  src: url('../fonts/saxmono.eot');
-  src: url('../fonts/saxmono.woff2') format('woff2'),
-       url('../fonts/saxmono.eot?#iefix') format('embedded-opentype');
+  src: url('saxMono.eot');
+  src: url('saxMono.woff2') format('woff2'),
+       url('saxMono.woff') format('woff'),
+       url('saxMono.ttf') format('truetype'),
+       url('saxMono.svg#saxMono') format('svg'),
+       url('saxMono.eot?#iefix') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
 }
-// VARS
 
 $lato: 'Lato', sans-serif;
 $saxmono: 'saxmono', monospace;
