@@ -1,0 +1,31 @@
+/////////////////////////
+//                     //
+//     - FONTS -       //
+//                     //
+/////////////////////////
+
+@font-face {
+  font-family: 'lato';
+  src: url('Lato-Regular.eot');
+  src: url('Lato-Regular.woff2') format('woff2'),
+       url('Lato-Regular.woff') format('woff'),
+       url('Lato-Regular.ttf') format('truetype'),
+       url('Lato-Regular.svg#Lato-Regular') format('svg'),
+       url('Lato-Regular.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'saxmono';
+  src: url('saxMono.eot');
+  src: url('saxMono.woff2') format('woff2'),
+       url('saxMono.woff') format('woff'),
+       url('saxMono.ttf') format('truetype'),
+       url('saxMono.svg#saxMono') format('svg'),
+       url('saxMono.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$lato: 'Lato', sans-serif;
+$saxmono: 'saxmono', monospace;
