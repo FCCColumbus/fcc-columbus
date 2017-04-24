@@ -1,0 +1,42 @@
+/////////////////////////
+//                     //
+//    - CONTENT -      //
+//                     //
+/////////////////////////
+
+.signup {
+	width: 100%;
+	height: 100%;
+	flex-grow: 1;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	&__wrapper,
+	&__form {
+		width: 100%;
+		height: 100%;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	& iframe { flex-grow: 1; }
+}
+
+/////////////////////////
+//                     //
+//   - BREAKPOINTS -   //
+//                     //
+/////////////////////////
+
+@media screen and (max-width: 960px) {
+
+}
+
+@media screen and (max-width: 680px) {
+
+}
+
+@media screen and (max-width: 580px) {
+
+
+}
