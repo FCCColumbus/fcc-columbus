@@ -1,51 +1,45 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="en" class="noIE">
 <head>
-	<meta charset="UTF-8">
-	<meta name="description" content="Sign up for FreeCodeCamp Columbus!">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>FreeCodeCamp Columbus</title>
-	<link rel="icon" href="/assets/favicon.png">
-	<link rel="stylesheet" href="/assets/fccc.min.css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>Free Code Camp Columbus</title>
+	<meta name="description" content="Welcome to Free Code Camp Columbus.">
+	<meta name="keywords" content="">
+	<link rel="canonical" href="http://fcccolumbus.com/" />
+	<link rel="icon" href="/assets/favicon.png" type="image/png" />
+	<link rel="stylesheet" type="text/css" href="/assets/fccc.min.css">
 </head>
-
-<body>
-<!-- HEADER -->
-<header>
+<body class="">
 	<div class="header">
 		<div class="header__wrap">
 			<div class="header__logo-wrap">
 				<a href="/"><div class="header__logo">FreeCodeCamp<i class="fa fa-free-code-camp"></i></div></a>
 			</div>
-			<div class="header__links">
+			<nav class="header__links">
 				<a class="header__nav-link" href="/pages/members.html"><div class="header__link">Members</div></a>
 				<a class="header__nav-link" href="/pages/slack.html"><div class="header__link">Slack</div></a>
 				<a class="header__nav-link" href="/pages/calendar.html"><div class="header__link">Calendar</div></a>
 				<a class="header__nav-link" href="/pages/sign-in.html"><div class="header__link">Sign In</div></a>
 				<div type="button" class="header__menu js__header-menu">Menu</div>
-			</div>    
+			</nav>   
 		</div>
 	</div>
 	<div class="header__dropdown">
-		<div class="header__dropdown-wrap">
-				<a href="/pages/members.html"><div class="header__dropdown-link">Members</div></a>
-				<a href="/pages/slack.html"><div class="header__dropdown-link">Slack</div></a>
-				<a href="/pages/calendar.html"><div class="header__dropdown-link">Calendar</div></a>
-				<a href="/pages/sign-in.html"><div class="header__dropdown-link">Sign In</div></a>
+		<nav class="header__dropdown-wrap">
+			<a href="/pages/members.html"><div class="header__dropdown-link">Members</div></a>
+			<a href="/pages/slack.html"><div class="header__dropdown-link">Slack</div></a>
+			<a href="/pages/calendar.html"><div class="header__dropdown-link">Calendar</div></a>
+			<a href="/pages/sign-in.html"><div class="header__dropdown-link">Sign In</div></a>
+		</nav>
+	</div>
+	<div class="signup">
+		<div class="signup__wrapper">
+			<div class="signup__form typeform-widget" data-url="https://fcccadmin.typeform.com/to/mcsPNg" data-transparency="50" data-hide-headers=true data-hide-footer=true></div>
 		</div>
 	</div>
-</header>
-<!-- END HEADER -->
-<!-- START BODY -->
-<div class="signup">
-	<div class="signup__wrapper">
-		<div class="signup__form typeform-widget" data-url="https://fcccadmin.typeform.com/to/mcsPNg" data-transparency="50" data-hide-headers=true data-hide-footer=true></div>
-	</div>
-</div>
-<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id="typef_orm",b="https://s3-eu-west-1.amazonaws.com/share.typeform.com/";if(!gi.call(d,id)){js=ce.call(d,"script");js.id=id;js.src=b+"widget.js";q=gt.call(d,"script")[0];q.parentNode.insertBefore(js,q)}})()</script>
-<script src="/assets/fccc.min.js"></script>
-<!-- END BODY -->
+	<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id="typef_orm",b="https://s3-eu-west-1.amazonaws.com/share.typeform.com/";if(!gi.call(d,id)){js=ce.call(d,"script");js.id=id;js.src=b+"widget.js";q=gt.call(d,"script")[0];q.parentNode.insertBefore(js,q)}})()</script>
+	<script src="/assets/fccc.min.js"></script>
 </body>
 </html>
