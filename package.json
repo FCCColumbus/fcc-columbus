@@ -12,9 +12,7 @@
     "production": "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
     "lint": "eslint app webpack.config.babel.js --ext .js,.jsx && flow",
     "fix": "eslint app webpack.config.babel.js --ext .js,.jsx --fix",
-    "test": "yarn lint && flow && jest --coverage",
-    "precommit": "yarn test",
-    "prepush": "yarn test"
+    "test": "yarn lint && flow && jest --coverage"
   },
   "engines": {
     "yarn": "1.0.2"
