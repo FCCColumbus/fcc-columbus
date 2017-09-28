@@ -1,0 +1,81 @@
+@import '~sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.c-events {
+  margin-top: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 1.5;
+  .events__card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 15%;
+    margin: 2%;
+    padding: 30px;
+    margin-top: 20px;
+    border: 1px solid $dark-green;
+    border-radius: 10px;
+  }
+  .events__card__description {
+    margin-left: 20px;
+    width: 100%;
+  }
+  .events__card__date {
+    color: $dark-green;
+  }
+  .events__card__title {
+    font-size: 20px;
+  }
+}
+
+.clickable {
+  position: absolute;
+  color: $black;
+  width:100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: #fff;
+  opacity: 0;
+}
+
+.margin-top {
+  margin-top: 200px;
+}
+
+@media (max-width: 800px) {
+  .c-events {
+    .events__card {
+      width: 80vw;
+    }
+  }
+}
+
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@media screen and (max-width: 960px) {
+
+}
+
+@media screen and (max-width: 680px) {
+
+}
+
+@media screen and (max-width: 580px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
