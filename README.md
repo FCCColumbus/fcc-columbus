@@ -16,7 +16,7 @@ Contributions to this website are restricted to Free Code Camp Columbus campers 
 
 #### Build production files
 
-    yarn prod:build
+    yarn production
 
 #### Lint javascript
 

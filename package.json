@@ -1,10 +1,11 @@
 {
-  "name": "fccc",
+  "name": "FCCC",
   "version": "0.0.1",
   "private": true,
   "description": "FreeCodeCamp Columbus website",
   "main": "index.js",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": "https://github.com/FCCColumbus/F3C_Website",
   "scripts": {
     "start": "yarn dev:start",
     "dev:start": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server --progress\"",
