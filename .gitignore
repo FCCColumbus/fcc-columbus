@@ -25,6 +25,10 @@
 *.log
 *.sql
 *.sqlite
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS generated files #
 ######################
@@ -45,3 +49,6 @@ grunt-config.json
 /_site
 *.sublime-project
 *.sublime-workspace
+dist
+/lib/
+/coverage/

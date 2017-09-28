@@ -1,0 +1,60 @@
+@import '~sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.cta {
+  margin: 50px 0;
+  width: 100%;
+}
+.wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.title {
+  width: 100%;
+  margin: 20px auto 40px auto;
+  text-align: center;
+  & h2 { font-size: 30px; }
+}
+.item {
+  font-size: 24px;
+  padding: 5px 0;
+  &::before {
+    font-family: 'FontAwesome';
+    display: inline-block;
+    position: absolute;
+    margin-left: -30px;
+    vertical-align: middle;
+    content: '\f121';
+  }
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@media screen and (max-width: 960px) {
+  .title h2 { font-size: 24px; }
+  .item {
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+
+}
+
+@media screen and (max-width: 580px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}

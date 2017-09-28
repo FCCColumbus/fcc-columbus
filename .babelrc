@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "env",
+    "stage-0",
+    "react",
+    "flow"
+  ],
+  "env": {
+    "start": {
+      "presets": [
+        "react-hmre"
+      ]
+    }
+  }
+}

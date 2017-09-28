@@ -1,0 +1,29 @@
+// ------------------
+//  FONTS
+// ------------------
+
+// A nice font converter I use: https://onlinefontconverter.com/ -- @jw
+
+@font-face {
+  font-family: 'lato';
+  src: url('fonts/Lato-Regular.eot');
+  src: url('fonts/Lato-Regular.woff2') format('woff2'),
+       url('fonts/Lato-Regular.woff') format('woff'),
+       url('fonts/Lato-Regular.ttf') format('truetype'),
+       url('fonts/Lato-Regular.svg#Lato-Regular') format('svg'),
+       url('fonts/Lato-Regular.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'saxmono';
+  src: url('fonts/saxMono.eot');
+  src: url('fonts/saxMono.woff2') format('woff2'),
+       url('fonts/saxMono.woff') format('woff'),
+       url('fonts/saxMono.ttf') format('truetype'),
+       url('fonts/saxMono.svg#saxMono') format('svg'),
+       url('fonts/saxMono.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}

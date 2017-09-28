@@ -1,0 +1,42 @@
+// ------------------
+//  MIXINS
+// ------------------
+
+@mixin gridPadding() {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+@mixin btn($color, $hoverColor, $hoverBG) {
+  height: 50px;
+  display: inline-block;
+  padding: 0 25px;
+  line-height: 46px;
+  color: $color;
+  border: 2px solid $color;
+  border-radius: 25px;
+  transition: $dTransition;
+  &:hover {
+    color: $hoverColor;
+    background: $hoverBG;
+  }
+}
+
+@mixin animateLink($color, $height: 2px) {
+  position: relative;
+  &:before {
+    width: 0%;
+    height: $height;
+    bottom: -5px;
+    right: 0;
+    position: absolute;
+    background: $color;
+    transition: $dTransition;
+    content: " ";
+  }
+  &:hover {
+    &:before { width: 100%; }
+  }
+}

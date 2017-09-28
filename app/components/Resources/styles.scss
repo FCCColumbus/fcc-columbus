@@ -1,0 +1,78 @@
+@import '~sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.links {
+  margin: 50px 0;
+  width: 100%;
+}
+.icon {
+  font-size: 10em !important;
+  color: $dark-green;
+}
+.wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.title {
+  width: 100%;
+  margin: 20px auto 40px auto;
+  text-align: center;
+  & h2 { font-size: 30px; }
+}
+.item {
+  width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.logo {
+  width: 100%;
+  text-align: center;
+  flex: auto;
+}
+.image {
+  flex: auto;
+  width: 100%;
+  height: auto;
+  max-width: 265px;
+}
+.name {
+  width: 100%;
+  & h2 {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 24px;
+  }
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@media screen and (max-width: 960px) {
+  .item { width: 50%; }
+  .title h2 { font-size: 24px; }
+  .name h2 { font-size: 18px; }
+}
+
+@media screen and (max-width: 680px) {
+  .icon{
+    font-size: 7em;
+    color: $dark-green;
+  }
+}
+
+@media screen and (max-width: 580px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
