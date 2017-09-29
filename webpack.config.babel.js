@@ -4,8 +4,9 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
+import GitRevisionPlugin from 'git-revision-webpack-plugin'
 import autoprefixer from 'autoprefixer'
-// import GitRevisionPlugin from 'git-revision-webpack-plugin'
 
 import { WDS_PORT } from './app/config/config'
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event
@@ -29,6 +30,17 @@ const productionPlugin = new webpack.DefinePlugin({
   'process.env': {
     NODE_ENV: JSON.stringify('production'),
   },
+})
+
+const BrowserSyncPluginConfig = new BrowserSyncPlugin({
+  host: 'localhost',
+  proxy: `http://localhost:${WDS_PORT}`,
+  logPrefix: 'FreeCodeCamp Columbus',
+  open: false,
+  ghostMode: true,
+}, {
+  // plugin options
+  reload: false, // prevent BrowserSync from reloading page and let WDS take care of it
 })
 
 const base = {
@@ -103,8 +115,10 @@ const developmentConfig = {
     historyApiFallback: true,
   },
   plugins: [
+    new webpack.NoEmitOnErrorsPlugin(),
     HtmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
+    BrowserSyncPluginConfig,
     new CopyWebpackPlugin([{ from: './public/' }]),
   ],
 }
@@ -120,9 +134,12 @@ const productionConfig = {
       filename: 'styles.css',
       allChunks: true,
     }),
-    // new webpack.BannerPlugin({
-    //   banner: new GitRevisionPlugin().version(),
-    // }),
+    new webpack.BannerPlugin({
+      banner: new GitRevisionPlugin().version(),
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+    }),
   ],
 }
 

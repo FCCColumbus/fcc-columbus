@@ -9,10 +9,12 @@
   "scripts": {
     "start": "yarn dev:start",
     "dev:start": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server --progress\"",
-    "production": "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
+    "prod:build": "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
     "lint": "eslint app webpack.config.babel.js --ext .js,.jsx && flow",
     "fix": "eslint app webpack.config.babel.js --ext .js,.jsx --fix",
-    "test": "yarn lint && flow && jest --coverage"
+    "test": "yarn lint && flow && jest --coverage",
+    "precommit": "yarn test",
+    "prepush": "yarn test && yarn prod:build"
   },
   "engines": {
     "yarn": "1.0.2"
@@ -48,8 +50,11 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.24.1",
+    "browser-sync": "^2.18.13",
+    "browser-sync-webpack-plugin": "^1.2.0",
     "connected-react-router": "^4.2.3",
     "copy-webpack-plugin": "^4.0.1",
+    "coveralls": "^3.0.0",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "eslint": "^4.6.1",
