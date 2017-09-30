@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import styles from './styles.scss'
 
-// type Props = {
-//   mobileActive: boolean,
-//   handleMobile: func,
-// };
-
-const Navigation = ({ mobileActive, handleMobile }) => {
-  return (
+const Navigation = ({ mobileActive, handleMobile }) => (
   <div>
     <div className={styles.nav}>
       <div className={styles.wrap}>
@@ -61,7 +55,6 @@ const Navigation = ({ mobileActive, handleMobile }) => {
     </div>
   </div>
 )
-}
 
 Navigation.propTypes = {
   mobileActive: PropTypes.bool.isRequired,
