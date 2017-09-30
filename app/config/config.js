@@ -1,1 +1,1 @@
-export const WDS_PORT = process.env.PORT || 3000
+export const WDS_PORT = process.env.PORT || 4000
