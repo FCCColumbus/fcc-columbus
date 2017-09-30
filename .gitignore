@@ -49,4 +49,6 @@ grunt-config.json
 /_site
 *.sublime-project
 *.sublime-workspace
+dist
 /lib/
+/coverage/
