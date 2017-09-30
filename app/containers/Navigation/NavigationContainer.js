@@ -10,8 +10,9 @@ class NavigationContainer extends Component {
     this.handleMobile = this.handleMobile.bind(this)
   }
 
+
+
   handleMobile(e) {
-    e.preventDefault()
 
     this.setState(prevState => ({
       mobileActive: prevState.mobileActive
@@ -21,6 +22,7 @@ class NavigationContainer extends Component {
   }
 
   render() {
+
     return (
       <Navigation
         mobileActive={this.state.mobileActive}
