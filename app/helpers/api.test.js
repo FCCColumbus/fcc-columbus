@@ -1,5 +1,5 @@
-import { sum } from './api'
+import { TDD } from './api'
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3)
+test('TDD should equal true', () => {
+  expect(TDD).toBe(true)
 })
