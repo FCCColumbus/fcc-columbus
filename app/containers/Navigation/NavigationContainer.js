@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Navigation } from '../../components'
+import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class NavigationContainer extends Component {
   constructor() {
@@ -10,7 +12,13 @@ class NavigationContainer extends Component {
     this.handleMobile = this.handleMobile.bind(this)
   }
 
-
+  componentWillMount() {
+   this.props.history.listen((location, action) => {
+      if(action === "POP") {
+        this.setState({ mobileActive: false })
+      }
+    })
+  }
 
   handleMobile(e) {
 
@@ -22,7 +30,6 @@ class NavigationContainer extends Component {
   }
 
   render() {
-
     return (
       <Navigation
         mobileActive={this.state.mobileActive}
@@ -31,4 +38,8 @@ class NavigationContainer extends Component {
   }
 }
 
-export default NavigationContainer
+NavigationContainer.propTypes = {
+  history: PropTypes.obj.isRequired,
+}
+
+export default withRouter(NavigationContainer)
