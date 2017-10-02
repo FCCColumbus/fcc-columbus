@@ -39,7 +39,7 @@ class NavigationContainer extends Component {
 }
 
 NavigationContainer.propTypes = {
-  history: PropTypes.obj.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 export default withRouter(NavigationContainer)
