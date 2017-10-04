@@ -11,12 +11,15 @@ import getRoutes from 'config/routes'
 import 'font-awesome/css/font-awesome.min.css'
 import 'sharedStyles/theme.scss'
 
+process.env.EVENTBRITE_API_KEY = "PKKJNAQIHCCSED57MNW4"
+
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
 const store = createStore(
   combineReducers(reducers),
   composeEnhancers(applyMiddleware(thunk))
 )
+
 
 ReactDOM.render(
   <Provider store={store}>
