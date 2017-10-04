@@ -1,4 +1,4 @@
-import {FETCH_EVENTS} from '../actions'
+import {FETCH_EVENTS, FETCH_EVENTS_FAILED} from '../actions'
 import { fromJS } from 'immutable'
 
 const initialState = fromJS({
@@ -20,15 +20,11 @@ const hero = (state = initialState, action) => {
       return state.merge({
         waypointState: action.waypoint,
       })
-    // case FETCHING_HERO:
-    //   return state.merge({
-    //     isFetching: true,
-    //   })
-    // case FETCHING_HERO_ERROR:
-    //   return state.merge({
-    //     isFetching: false,
-    //     error: action.error,
-    //   })
+    case FETCH_EVENTS_FAILED:
+      return state.merge({
+        isFetching: false,
+        error: action.error,
+      })
     // case FETCHING_HERO_SUCCESS:
     //   return state.merge({
     //     isFetching: false,
