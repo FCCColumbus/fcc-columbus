@@ -1,28 +1,20 @@
-import {FETCH_EVENTS, FETCH_EVENTS_FAILED} from '../actions'
+import {FETCH_EVENTS, FETCH_EVENTS_FAILED, FOOBAR} from '../actions'
 import { fromJS } from 'immutable'
 
 const initialState = fromJS({
-  isFetching: true,
+  events: [],
   error: '',
-  waypointState: false,
-  title: {
-    focused: '',
-    text: '',
-  },
-  ctaLink: '',
-  body: '',
-  footer: '',
 })
 
-const hero = (state = initialState, action) => {
+const calendarReducer = (state = initialState, action) => {
+  console.log(action.type)
   switch (action.type) {
     case FETCH_EVENTS:
       return state.merge({
-        waypointState: action.waypoint,
+        events: action.waypoint,
       })
     case FETCH_EVENTS_FAILED:
       return state.merge({
-        isFetching: false,
         error: action.error,
       })
     // case FETCHING_HERO_SUCCESS:
@@ -34,9 +26,11 @@ const hero = (state = initialState, action) => {
     //     body: action.body,
     //     footer: action.footer,
     //   })
+    case FOOBAR:
+      return state
     default:
       return state
   }
 }
 
-export default hero
+export default calendarReducer

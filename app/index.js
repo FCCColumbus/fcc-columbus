@@ -14,8 +14,6 @@ import 'sharedStyles/theme.scss'
 
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
-console.log(process.env)
-
 const store = createStore(
   combineReducers(reducers),
   composeEnhancers(applyMiddleware(thunk))
