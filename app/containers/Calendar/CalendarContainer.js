@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { ComingSoon } from '../../components'
+import PropTypes from 'prop-types'
+import { Calendar } from '../../components'
 import { withRouter } from 'react-router-dom'
-import { fetchEventsRequest, foobar } from '../../redux/actions'
+import { fetchEventsRequest } from '../../redux/actions'
 import { connect } from 'react-redux'
+import { Map } from 'immutable'
 
 
 class CalendarContainer extends Component {
@@ -15,20 +17,23 @@ class CalendarContainer extends Component {
     }
   }
   componentDidMount() {
-    this.props.foobar()
     this.props.fetchEventsRequest()
   }
   render () {
     return (
-      <ComingSoon title='Calendar' />
+      <Calendar />
     )
   }
 }
 
+CalendarContainer.propTypes = {
+  fetchEventsRequest: PropTypes.func.isRequired,
+}
+
 function mapStateToProps(state) {
   return {
-    eventList: state.events,
-    errors: state.errors,
+    eventList: state.calendarReducer.get('events').toJS(),
+    errors: state.calendarReducer.get('errors'),
   }
 }
 
