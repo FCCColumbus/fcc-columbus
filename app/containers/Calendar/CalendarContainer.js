@@ -4,24 +4,18 @@ import { Calendar } from '../../components'
 import { withRouter } from 'react-router-dom'
 import { fetchEventsRequest } from '../../redux/actions'
 import { connect } from 'react-redux'
-import { Map } from 'immutable'
 
 
 class CalendarContainer extends Component {
-  constructor() {
-    super()
-    this.state = {
-      isFetching: true,
-      events: [],
-      errors: {},
-    }
-  }
+
   componentDidMount() {
     this.props.fetchEventsRequest()
   }
   render () {
+    console.log(this.props.isFetching)
+    console.log(this.props.eventList)
     return (
-      <Calendar />
+      <Calendar events={this.props.eventList} isFetching={this.props.isFetching}/>
     )
   }
 }
@@ -34,7 +28,8 @@ function mapStateToProps(state) {
   return {
     eventList: state.calendarReducer.get('events').toJS(),
     errors: state.calendarReducer.get('errors'),
+    isFetching: state.calendarReducer.get('isFetching'),
   }
 }
 
-export default withRouter(connect(mapStateToProps, { fetchEventsRequest, foobar })(CalendarContainer))
+export default withRouter(connect(mapStateToProps, { fetchEventsRequest })(CalendarContainer))

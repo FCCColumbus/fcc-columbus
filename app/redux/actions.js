@@ -1,6 +1,6 @@
 export const FETCH_EVENTS ='FETCH_EVENTS'
 export const FETCH_EVENTS_FAILED = 'FETCH_EVENTS_FAILED'
-export const FOOBAR = 'FOOBAR'
+export const FETCHING = 'FETCHING'
 
 const apiAddress = `https://www.eventbriteapi.com/v3/events/search/?user.id=209958981395&token=${process.env.EVENTBRITE_API_KEY}`
 
@@ -11,16 +11,12 @@ export const fetchEvents = (waypoint) => ({
 
 export const fetchingEventsError = (error) => ({
   type: FETCH_EVENTS_FAILED,
-  error: 'error fetching events',
+  error,
 })
 
-export const foobar = () => {
-  return {
-    type: FOOBAR,
-    payload: 'foobar',
-  }
-}
-
+export const isFetching = () => ({
+  type: FETCHING,
+})
 
 export const fetchEventsRequest= () => {
   return (dispatch) => {
@@ -29,6 +25,7 @@ export const fetchEventsRequest= () => {
         return res.json()
       })
       .then((content) => {
+        dispatch(isFetching())
         dispatch(fetchEvents(content.events))
       })
       .catch((error) => {
