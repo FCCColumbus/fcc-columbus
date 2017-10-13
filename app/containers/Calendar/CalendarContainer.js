@@ -12,7 +12,6 @@ class CalendarContainer extends Component {
     this.props.fetchEventsRequest()
   }
   render () {
-    console.log(this.props.eventList)
     return (
       <Calendar eventList={this.props.eventList} isFetching={this.props.isFetching}/>
     )

@@ -17,7 +17,7 @@
     "prepush": "yarn test && yarn prod:build"
   },
   "engines": {
-    "yarn": "1.1.0"
+    "yarn": ">= 1.0.2"
   },
   "browserslist": [
     "> 1%"
