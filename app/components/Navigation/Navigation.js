@@ -9,7 +9,7 @@ const Navigation = ({ mobileActive, handleMobile }) => (
       <div className={styles.wrap}>
         <div className={styles.logoWrap}>
           <Link to='/'>
-            <div className={styles.logo}>
+            <div className={styles.logo} >
               FreeCodeCamp<i className='fa fa-free-code-camp' />
             </div>
           </Link>

@@ -10,19 +10,21 @@ const initialState = fromJS({
 const calendarReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_EVENTS:
+      console.log(action.waypoint)
       return state.merge({
-        events: action.waypoint,
+        events: action.waypoint.sort((a, b) => {
+          return a.start.utc > b.start.utc
+        }),
       })
     case FETCHING: {
-      let fetching = state.get('isFetching');
+      let fetching = state.get('isFetching')
       if(fetching) {
         fetching = false
       } else {
         fetching  = true
       }
-
       return state.merge({
-        isFetching: fetching
+        isFetching: fetching,
       })
     }
     case FETCH_EVENTS_FAILED:

@@ -12,16 +12,18 @@ class CalendarContainer extends Component {
     this.props.fetchEventsRequest()
   }
   render () {
-    console.log(this.props.isFetching)
     console.log(this.props.eventList)
     return (
-      <Calendar events={this.props.eventList} isFetching={this.props.isFetching}/>
+      <Calendar eventList={this.props.eventList} isFetching={this.props.isFetching}/>
     )
   }
 }
 
 CalendarContainer.propTypes = {
   fetchEventsRequest: PropTypes.func.isRequired,
+  eventList: PropTypes.array.isRequired,
+  errors: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 }
 
 function mapStateToProps(state) {
