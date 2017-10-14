@@ -117,7 +117,7 @@ const developmentConfig = {
   },
   plugins: [
     new Dotenv({
-      path: '.env.local',
+      path: '.env',
       safe: false,
     }),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -132,6 +132,10 @@ const developmentConfig = {
 const productionConfig = {
   devtool: 'cheap-module-source-map',
   plugins: [
+    new Dotenv({
+      path: '.env',
+      safe: false,
+    }),
     HtmlWebpackPluginConfig,
     productionPlugin,
     new FaviconsWebpackPlugin('images/favicon.png'),
