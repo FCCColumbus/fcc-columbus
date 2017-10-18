@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Signin } from '../../components'
+import { ComingSoon } from '../../components'
 
 class SignInContainer extends Component {
   render () {
     return (
-      <Signin />
+      <ComingSoon title='Account Management' />
     )
   }
 }

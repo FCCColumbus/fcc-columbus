@@ -3,11 +3,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import styles from './styles.scss'
 
-// type Props = {
-//   mobileActive: boolean,
-//   handleMobile: func,
-// };
-
 const Navigation = ({ mobileActive, handleMobile }) => (
   <div>
     <div className={styles.nav}>
@@ -19,7 +14,7 @@ const Navigation = ({ mobileActive, handleMobile }) => (
             </div>
           </Link>
         </div>
-        <nav className={styles.links}>
+        <nav className={styles.links} >
           <Link className={styles.navLink} to='/members'>
             <div className={styles.link}>Members</div>
           </Link>
@@ -44,16 +39,16 @@ const Navigation = ({ mobileActive, handleMobile }) => (
       ? `${styles.show} ${styles.dropdown}`
       : styles.dropdown}>
       <div className={styles.dropdownWrap}>
-        <Link to='/members'>
+        <Link to='/members' onClick={e => handleMobile(e)}>
           <div className={styles.dropdownLink}>Members</div>
         </Link>
-        <Link to='/slack'>
+        <Link to='/slack' onClick={e => handleMobile(e)}>
           <div className={styles.dropdownLink}>Slack</div>
         </Link>
-        <Link to='/calendar'>
+        <Link to='/calendar' onClick={e => handleMobile(e)}>
           <div className={styles.dropdownLink}>Calendar</div>
         </Link>
-        <Link to='/signin'>
+        <Link to='/signin' onClick={e => handleMobile(e)}>
           <div className={styles.dropdownLink}>Sign In</div>
         </Link>
       </div>
