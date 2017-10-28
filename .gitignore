@@ -52,3 +52,4 @@ grunt-config.json
 dist
 /lib/
 /coverage/
+.env
