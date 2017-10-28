@@ -9,7 +9,7 @@ const fetchingCalendar = () => ({
   type: FETCHING_CALENDAR,
 })
 
-const fetchingCalendarError = () => ({
+const fetchingCalendarError = (err) => ({
   type: FETCHING_CALENDAR_ERROR,
   error: `'Uh-oh, the calendar didn't load correctly. Please contact the FCCC adminstrators`,
 })
@@ -57,5 +57,3 @@ const calendar = (state = initialState, action) => {
 }
 
 export default calendar
-
-
