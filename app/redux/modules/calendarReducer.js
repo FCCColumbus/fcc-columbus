@@ -10,6 +10,7 @@ const initialState = fromJS({
 const calendarReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_EVENTS:
+      console.log(action.waypoint)
       return state.merge({
         events: action.waypoint.sort((a, b) => {
           return a.start.utc > b.start.utc
