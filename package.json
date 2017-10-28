@@ -26,7 +26,6 @@
   "author": "justin woodward",
   "dependencies": {
     "axios": "^0.16.2",
-    "dotenv-webpack": "^1.5.4",
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
     "react": "16",
