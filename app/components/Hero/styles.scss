@@ -86,7 +86,7 @@
       margin-bottom: 10px;
       padding-left: 30px;
     }
-    .linksName h2 { font-size: 18px; }
+    .linksName h2 { font-size: 20px; }
   }
 }
 
@@ -100,12 +100,13 @@
         font-size: 7em;
         color: $dark-green;
     }
-    .joinNow { font-size: 18px; }
+    .joinNow { font-size: 24px; }
   }
 }
 
 @media screen and (max-width: 580px) {
-
+  .joinNow { font-size: 24px; }
+  
 }
 
 @media screen and (max-width: 480px) {
