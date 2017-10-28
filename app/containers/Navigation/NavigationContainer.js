@@ -1,18 +1,37 @@
 import React, { Component } from 'react'
-import { Navigation } from '../../components'
-import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
+
+import { Navigation } from 'components'
 
 class NavigationContainer extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       mobileActive: false,
+      links: [
+        {
+          href: '/members',
+          title: 'Members',
+        },
+        {
+          href: '/slack',
+          title: 'Slack',
+        },
+        {
+          href: '/calendar',
+          title: 'Calendar',
+        },
+        {
+          href: '/signin',
+          title: 'Sign In',
+        },
+      ],
+      menu: 'Menu',
     }
-    this.handleMobile = this.handleMobile.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount () {
    this.props.history.listen((location, action) => {
       if(action === "POP") {
         this.setState({ mobileActive: false })
@@ -20,20 +39,25 @@ class NavigationContainer extends Component {
     })
   }
 
-  handleMobile(e) {
+  handleMobile (e, close) {
+    if (close && !this.state.mobileActive) {
+      return
+    }
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       mobileActive: prevState.mobileActive
         ? !prevState.mobileActive
         : true,
     }))
   }
 
-  render() {
+  render () {
     return (
       <Navigation
+        links={this.state.links}
+        menu={this.state.menu}
         mobileActive={this.state.mobileActive}
-        handleMobile={e => this.handleMobile(e)} />
+        handleMobile={(e, close) => this.handleMobile(e, close)} />
     )
   }
 }

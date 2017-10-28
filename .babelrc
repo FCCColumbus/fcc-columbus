@@ -5,10 +5,19 @@
     "react",
     "flow"
   ],
+  "plugins": [
+    "syntax-dynamic-import",
+    "babel-plugin-transform-react-jsx"
+  ],
   "env": {
     "start": {
       "presets": [
         "react-hmre"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
       ]
     }
   }

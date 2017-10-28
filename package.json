@@ -8,8 +8,9 @@
   "repository": "https://github.com/FCCColumbus/F3C_Website",
   "scripts": {
     "start": "yarn dev:start",
-    "dev:start": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server --progress\"",
+    "dev:start": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server --hot --inline --progress\"",
     "prod:build": "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
+    "prod:serve": "serve ./dist -s -o",
     "lint": "eslint app webpack.config.babel.js --ext .js,.jsx && flow",
     "fix": "eslint app webpack.config.babel.js --ext .js,.jsx --fix",
     "test": "yarn lint && flow && jest --coverage",
@@ -17,25 +18,25 @@
     "prepush": "yarn test && yarn prod:build"
   },
   "engines": {
-    "yarn": ">= 1.0.2"
+    "yarn": ">=1.0.2"
   },
   "browserslist": [
     "> 1%"
   ],
   "keywords": [],
-  "author": "justin woodward",
+  "author": "freecodecamp columbus contributors",
   "dependencies": {
     "axios": "^0.16.2",
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "16",
+    "react-dom": "16",
+    "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scroll": "^1.5.4",
-    "react-waypoint": "^7.1.0",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
@@ -45,6 +46,9 @@
     "babel-eslint": "^8.0.0",
     "babel-jest": "^21.0.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
@@ -52,8 +56,10 @@
     "babel-preset-stage-0": "^6.24.1",
     "browser-sync": "^2.18.13",
     "browser-sync-webpack-plugin": "^1.2.0",
+    "compression-webpack-plugin": "^1.0.1",
     "connected-react-router": "^4.2.3",
     "copy-webpack-plugin": "^4.0.1",
+    "core-js": "^2.5.1",
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
@@ -74,6 +80,7 @@
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
     "image-webpack-loader": "^3.4.2",
+    "inline-manifest-webpack-plugin": "^3.0.1",
     "jest": "^21.1.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.12.1",
@@ -82,8 +89,22 @@
     "redux-devtools": "^3.4.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
+    "serve": "^6.3.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-chunk-hash": "^0.5.0",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-manifest-plugin": "^1.3.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "modulePaths": [
+      "node_modules",
+      "app"
+    ]
   }
 }

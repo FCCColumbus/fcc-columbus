@@ -4,35 +4,52 @@
 //  CONTENT
 // ------------------
 
-.c-events {
-  margin-top: 200px;
+.cEvents {
+  margin-top: 100px;
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   line-height: 1.5;
-  .events__card {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    width: 15%;
-    margin: 2%;
-    padding: 30px;
-    margin-top: 20px;
-    border: 1px solid $dark-green;
-    border-radius: 10px;
-  }
-  .events__card__description {
-    margin-left: 20px;
-    width: 100%;
-  }
-  .events__card__date {
-    color: $dark-green;
-  }
-  .events__card__title {
-    font-size: 20px;
-  }
+}
+
+.link {
+  color: inherit;
+}
+
+.headTitle {
+  margin-top: 200px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.eventsCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  margin: 2%;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid $dark-green;
+  border-radius: 10px;
+}
+
+.eventsCardDescription {
+  margin-left: 20px;
+  width: 100%;
+}
+
+.eventsCardDate {
+  color: $dark-green;
+  font-size: 1.1em;
+}
+
+.eventsCardTitle {
+  font-size: 1.3em;
+  text-decoration: none;
 }
 
 .clickable {
@@ -43,29 +60,26 @@
   top: 0;
   left: 0;
   z-index: 10;
-  background: #fff;
+  background: #FFFFFF;
   opacity: 0;
 }
 
-.margin-top {
+.marginTop {
   margin-top: 200px;
 }
 
 @media (max-width: 800px) {
-  .c-events {
-    .events__card {
-      width: 80vw;
-    }
+  .events__card {
+    width: 80vw;
   }
 }
-
 
 // ------------------
 //  BREAKPOINTS
 // ------------------
 
 @media screen and (max-width: 960px) {
-
+  .cEvents { justify-content: center; }
 }
 
 @media screen and (max-width: 680px) {
@@ -73,7 +87,9 @@
 }
 
 @media screen and (max-width: 580px) {
-
+  .cEvents { font-size: 1.1em; }
+  .img { width: 70vw; }
+  .eventsCard { border: none; }
 }
 
 @media screen and (max-width: 480px) {
