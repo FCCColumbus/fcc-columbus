@@ -9634,8 +9634,8 @@ yauzl@2.4.1:
     fd-slicer "~1.0.1"
 
 yauzl@^2.2.1:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.8.0.tgz#79450aff22b2a9c5a41ef54e02db907ccfbf9ee2"
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.9.0.tgz#927aa84392eed053124496b6ea8fc1f52dae5b52"
   dependencies:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.0.1"
