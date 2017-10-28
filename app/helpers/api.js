@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { calendarAPI } from 'config/config'
-// import MockAdapter from 'axios-mock-adapter'
 
 export const TDD = true
 
