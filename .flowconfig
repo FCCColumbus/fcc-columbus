@@ -8,3 +8,4 @@ module.file_ext=.json
 [ignore]
 .*/node_modules/eslint-plugin-jsx-a11y/*
 .*/node_modules/immutable/.*
+.*/node_modules/babel-plugin-transform-react-remove-prop-types/**/*
