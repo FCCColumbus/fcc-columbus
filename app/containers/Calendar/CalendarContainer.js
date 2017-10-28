@@ -1,36 +1,43 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Calendar } from '../../components'
-import { withRouter } from 'react-router-dom'
-import { fetchEventsRequest } from '../../redux/actions'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { List } from 'immutable'
 
+import * as calendarActionCreators from 'redux/modules/calendar'
+import { Calendar } from 'components'
 
 class CalendarContainer extends Component {
-
   componentDidMount() {
-    this.props.fetchEventsRequest()
+    this.props.fetchAndHandleEvents()
   }
+
   render () {
-    return (
-      <Calendar eventList={this.props.eventList} isFetching={this.props.isFetching}/>
+    return (this.props.isFetching
+      ? <p>Loading Events...</p>
+      : <Calendar events={this.props.events} />
     )
   }
 }
 
 CalendarContainer.propTypes = {
-  fetchEventsRequest: PropTypes.func.isRequired,
-  eventList: PropTypes.array.isRequired,
-  errors: PropTypes.string.isRequired,
+  fetchAndHandleEvents: PropTypes.func.isRequired,
+  events: PropTypes.instanceOf(List).isRequired,
+  error: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
 }
 
-function mapStateToProps(state) {
-  return {
-    eventList: state.calendarReducer.get('events').toJS(),
-    errors: state.calendarReducer.get('errors'),
-    isFetching: state.calendarReducer.get('isFetching'),
-  }
-}
+const mapStateToProps = ({ calendar }) => ({
+  events: calendar.get('events'),
+  isFetching: calendar.get('isFetching'),
+  error: calendar.get('error'),
+})
 
-export default withRouter(connect(mapStateToProps, { fetchEventsRequest })(CalendarContainer))
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators(calendarActionCreators, dispatch)
+)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CalendarContainer)

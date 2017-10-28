@@ -26,11 +26,10 @@
   "author": "justin woodward",
   "dependencies": {
     "axios": "^0.16.2",
-    "dotenv-webpack": "^1.5.4",
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "16",
+    "react-dom": "16",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scroll": "^1.5.4",
@@ -86,5 +85,15 @@
     "style-loader": "^0.18.2",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "modulePaths": [
+      "node_modules",
+      "app"
+    ]
   }
 }

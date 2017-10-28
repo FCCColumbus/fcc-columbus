@@ -7,7 +7,6 @@ import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import GitRevisionPlugin from 'git-revision-webpack-plugin'
 import autoprefixer from 'autoprefixer'
-import Dotenv from 'dotenv-webpack'
 
 import { WDS_PORT } from './app/config/config'
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event
@@ -116,10 +115,6 @@ const developmentConfig = {
     historyApiFallback: true,
   },
   plugins: [
-    new Dotenv({
-      path: '.env',
-      safe: false,
-    }),
     new webpack.NoEmitOnErrorsPlugin(),
     HtmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
@@ -132,10 +127,6 @@ const developmentConfig = {
 const productionConfig = {
   devtool: 'cheap-module-source-map',
   plugins: [
-    new Dotenv({
-      path: '.env',
-      safe: false,
-    }),
     HtmlWebpackPluginConfig,
     productionPlugin,
     new FaviconsWebpackPlugin('images/favicon.png'),
