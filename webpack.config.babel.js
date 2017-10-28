@@ -4,9 +4,15 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
+import GitRevisionPlugin from 'git-revision-webpack-plugin'
+import WebpackChunkHash from 'webpack-chunk-hash'
+import InlineManifestWebpackPlugin from 'inline-manifest-webpack-plugin'
+import CompressionPlugin from 'compression-webpack-plugin'
 import autoprefixer from 'autoprefixer'
-// import GitRevisionPlugin from 'git-revision-webpack-plugin'
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
+import packageJson from './package.json'
 import { WDS_PORT } from './app/config/config'
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event
 const isProduction = LAUNCH_COMMAND === 'prod:build'
@@ -20,7 +26,7 @@ const PATHS = {
 }
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: `${PATHS.app}/index.html`,
+  template: `${PATHS.app}/index.ejs`,
   filename: 'index.html',
   inject: 'body',
 })
@@ -31,13 +37,30 @@ const productionPlugin = new webpack.DefinePlugin({
   },
 })
 
+const BrowserSyncPluginConfig = new BrowserSyncPlugin({
+  host: 'localhost',
+  proxy: `http://localhost:${WDS_PORT}`,
+  open: true,
+  ghostMode: {
+    clicks: true,
+    forms: true,
+    scroll: true,
+  },
+  ghostMode: true, // eslint-disable-line no-dupe-keys
+}, {
+  // plugin options
+  reload: false, // prevent BrowserSync from reloading page and let WDS take care of it
+})
+
 const base = {
-  entry: [
-    PATHS.app,
-  ],
+  entry: {
+    app: PATHS.app,
+    vendor: ['core-js/fn/promise', ...Object.keys(packageJson.dependencies).filter((el) => el !== 'font-awesome')],
+  },
   output: {
     path: PATHS.build,
-    filename: 'bundle.js',
+    filename: isProduction ? '[name].[chunkhash:8].js' : '[name].js', // use chunkhash if more than one
+    chunkFilename: isProduction ? '[name].[chunkhash:8].js' : '[name].js',
     publicPath: '/',
   },
   module: {
@@ -55,12 +78,12 @@ const base = {
               { loader: 'sass-loader' },
             ],
       },
-      { test: /\.(eot|ttf|woff|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=fonts/[name].[ext]' },
+      { test: /\.(eot|ttf|woff|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=fonts/[name].[hash:8].[ext]' },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         loaders: [
-          'file-loader?hash=sha512&digest=hex&name=images/[name].[ext]', {
+          'file-loader?name=images/[name].[hash:8].[ext]', {
             loader: 'image-webpack-loader',
             options: {
               gifsicle: {
@@ -98,31 +121,74 @@ const developmentConfig = {
   devServer: {
     port: WDS_PORT,
     contentBase: `${PATHS.build}/public`,
-    hot: true,
-    inline: true,
     historyApiFallback: true,
   },
   plugins: [
+    new webpack.NoEmitOnErrorsPlugin(),
     HtmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
-    new CopyWebpackPlugin([{ from: './public/' }]),
+    BrowserSyncPluginConfig,
+    new CopyWebpackPlugin([{ from: 'public/' }]),
+    // uncomment to view sizes of node_modules.
+    //
+    // new BundleAnalyzerPlugin({
+    //   analyzerHost: 'localhost',
+    //   analyzerPort: 3002,
+    //   openAnalyzer: true,
+    // }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+    }),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de|en/),
   ],
 }
 
 const productionConfig = {
   devtool: 'cheap-module-source-map',
   plugins: [
-    HtmlWebpackPluginConfig,
     productionPlugin,
     new FaviconsWebpackPlugin('images/favicon.png'),
-    new CopyWebpackPlugin([{ from: './public/' }]),
+    new webpack.BannerPlugin({
+      banner: new GitRevisionPlugin().version(),
+    }),
     new ExtractTextPlugin({
       filename: 'styles.css',
       allChunks: true,
     }),
-    // new webpack.BannerPlugin({
-    //   banner: new GitRevisionPlugin().version(),
-    // }),
+    new webpack.HashedModuleIdsPlugin(),
+    new WebpackChunkHash(),
+    new InlineManifestWebpackPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor', 'manifest'],
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]),
+    new webpack.NoErrorsPlugin(),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de|en/),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      sourceMap: true,
+      compress: {
+        warnings: false, // Suppress uglification warnings
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        screw_ie8: true,
+      },
+      output: {
+        comments: false,
+      },
+      exclude: [/\.min\.js$/gi], // skip pre-minified libs
+    }),
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0,
+    }),
+    HtmlWebpackPluginConfig,
+    new CopyWebpackPlugin([{ from: 'public/' }]),
   ],
 }
 

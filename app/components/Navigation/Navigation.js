@@ -1,41 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+
 import styles from './styles.scss'
 
-// type Props = {
-//   mobileActive: boolean,
-//   handleMobile: func,
-// };
-
-const Navigation = ({ mobileActive, handleMobile }) => (
+const Navigation = ({ links, menu, mobileActive, handleMobile }) => (
   <div>
     <div className={styles.nav}>
       <div className={styles.wrap}>
         <div className={styles.logoWrap}>
-          <Link to='/'>
+          <Link to='/' onClick={(e, close) => handleMobile(e, true)}>
             <div className={styles.logo}>
               FreeCodeCamp<i className='fa fa-free-code-camp' />
             </div>
           </Link>
         </div>
         <nav className={styles.links}>
-          <Link className={styles.navLink} to='/members'>
-            <div className={styles.link}>Members</div>
-          </Link>
-          <Link className={styles.navLink} to='/slack'>
-            <div className={styles.link}>Slack</div>
-          </Link>
-          <Link className={styles.navLink} to='/calendar'>
-            <div className={styles.link}>Calendar</div>
-          </Link>
-          <Link className={styles.navLink} to='/signin'>
-            <div className={styles.link}>Sign In</div>
-          </Link>
+          {links.map(({ href, title }) => (
+            <Link key={href} className={styles.navLink} to={href}>
+              <div className={styles.link}>{title}</div>
+            </Link>
+          ))}
           <button
-            onClick={e => handleMobile(e)}
+            onClick={(e) => handleMobile(e)}
             className={styles.menu}>
-            Menu
+            {menu}
           </button>
         </nav>
       </div>
@@ -44,24 +33,19 @@ const Navigation = ({ mobileActive, handleMobile }) => (
       ? `${styles.show} ${styles.dropdown}`
       : styles.dropdown}>
       <div className={styles.dropdownWrap}>
-        <Link to='/members'>
-          <div className={styles.dropdownLink}>Members</div>
-        </Link>
-        <Link to='/slack'>
-          <div className={styles.dropdownLink}>Slack</div>
-        </Link>
-        <Link to='/calendar'>
-          <div className={styles.dropdownLink}>Calendar</div>
-        </Link>
-        <Link to='/signin'>
-          <div className={styles.dropdownLink}>Sign In</div>
-        </Link>
+        {links.map(({ href, title }) => (
+          <Link key={href} to={href} onClick={(e) => handleMobile(e)}>
+            <div className={styles.dropdownLink}>{title}</div>
+          </Link>
+        ))}
       </div>
     </div>
   </div>
 )
 
 Navigation.propTypes = {
+  links: PropTypes.array.isRequired,
+  menu: PropTypes.string.isRequired,
   mobileActive: PropTypes.bool.isRequired,
   handleMobile: PropTypes.func.isRequired,
 }
