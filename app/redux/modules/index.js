@@ -1,1 +1,1 @@
-export calendarReducer from './calendarReducer'
+export calendar from './calendar'

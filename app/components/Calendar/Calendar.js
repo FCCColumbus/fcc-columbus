@@ -1,36 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
+import { List } from 'immutable'
+
 import styles from './styles.scss'
 
-const Calendar = (props) => {
-  return (
-    <div>
-      <h2 className={styles.cEvents__headTitle}>Upcoming Events</h2>
-      <div className={styles.cEvents}>
-      {
-        props.eventList !== [] ?
-        props.eventList.map((curr, idx) => {
-          let date = new Date(curr.start.utc)
-
-          return <div key={idx} className={styles.cEvents__eventsCard}>
-            <a href={curr.url} target='_blank'>
-              <h2 className={styles.cEvents__eventsCardDate}>{`${date.getMonth() + 1}/${date.getDate()}`}</h2>
-              <img src={curr.logo.url} alt={`${date.getMonth() + 1}/${date.getDate()} ${curr.name.text}`} />
-              <h2 className={styles.cEvents__eventsCardTitle}>{`${curr.name.text}`}</h2>
-            </a>
-          </div>
-        })
-        :
-        <div>No Events to Display</div>
-      }
+const Calendar = ({ events }) => ([
+  <h2 key='title' className={styles.headTitle}>Upcoming Events</h2>,
+  <div key='body' className={styles.cEvents}>{events.size > 0
+    ? events.map((eventCard, i) => (
+      <div key={eventCard.get('id')} className={styles.eventsCard}>
+        <Link className={styles.link} to={eventCard.get('url')} target='_blank'>
+          <h2 className={styles.eventsCardDate}>
+            Date: {eventCard.get('title')}
+          </h2>
+          <img
+            src={eventCard.getIn(['logo', 'src'])}
+            alt={eventCard.getIn(['logo', 'alt'])} />
+          <h2 className={styles.eventsCardTitle}>
+            {eventCard.getIn(['name', 'text'])}
+          </h2>
+        </Link>
       </div>
-    </div>
-  )
-}
+    ))
+    : <div>No Events to Display</div>}
+  </div>,
+])
 
 Calendar.propTypes = {
-  eventList: PropTypes.array,
+  events: PropTypes.instanceOf(List).isRequired,
 }
 
-export default withRouter(Calendar)
+export default Calendar
