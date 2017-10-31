@@ -58,9 +58,9 @@ const Admins = () => (
       <div className={styles.admin}>
         <div className={styles.name}>Sarah Bruland</div>
         <Link
-          to='/#'
+          to='https://www.linkedin.com/in/sarahlillybruland/'
           rel='noopener noreferrer'
-          title={'No profile?'}>
+          title={'Go to Sarah\'s LinkedIn Profile'}>
           <div className={styles.image}>
             <img
               src='images/sarah.jpg'
