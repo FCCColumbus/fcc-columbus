@@ -58,15 +58,15 @@ const Admins = () => (
       <div className={styles.admin}>
         <div className={styles.name}>Sarah Bruland</div>
         <Link
-          to='/#'
-          rel='noopener noreferrer'
-          title={'No profile?'}>
+          to='https://www.linkedin.com/in/sarahlillybruland'
+          target='_blank'
+          rel='noopener noreferrer'>
           <div className={styles.image}>
             <img
               src='images/sarah.jpg'
               alt='admin, Sarah.'
-              className={styles.face}
-              onClick={(e) => e.preventDefault()} />
+              className={styles.face} 
+              title={'Go to Sarah\'s LinkedIn Profile'}/>
           </div>
         </Link>
         <div className={styles.job}>Frontend Developer</div>

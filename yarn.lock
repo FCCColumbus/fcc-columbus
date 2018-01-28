@@ -7984,8 +7984,8 @@ serve-static@1.13.1:
     send "0.16.1"
 
 serve@^6.3.1:
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/serve/-/serve-6.3.1.tgz#904ab7eed8faba422fa89ae716271d0376a00b7f"
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/serve/-/serve-6.4.0.tgz#397d7c97c8b9ff728a41d9bd4a75db0d7ddad43e"
   dependencies:
     args "3.0.7"
     basic-auth "2.0.0"
