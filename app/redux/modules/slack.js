@@ -1,10 +1,18 @@
 import { fromJS } from "immutable"
 import { postSlackInvite } from "helpers/api"
+import isEmail from "validator/lib/isEmail"
 
 const POSTING_SLACK_INVITE = "POSTING_SLACK_INVITE"
 const POSTING_SLACK_ERROR = "POSTING_SLACK_ERROR"
 const POSTING_SLACK_SUCCESS = "POSTING_SLACK_SUCCESS"
 const UPDATE_SLACK_FIELDS = "UPDATE_SLACK_FIELDS"
+const VALIDATE_SLACK_FIELDS = "VALIDATE_SLACK_FIELDS"
+
+export const validateFields = ({name, value}) => ({
+  type: VALIDATE_SLACK_FIELDS,
+  name,
+  value,
+})
 
 export const updateFields = ({ name, value }) => ({
   type: UPDATE_SLACK_FIELDS,
@@ -73,6 +81,20 @@ const slack = (state = initialState, action) => {
       return state.merge({
         fields: state.get("fields").set(action.name, action.value),
       })
+    case VALIDATE_SLACK_FIELDS:
+      if(!isEmail(action.email)) {
+        return state.merge({
+          error: state.get("error").set("Please enter a valid email"),
+        })
+      }
+
+      if(!action.name.length) {
+        return state.merge({
+          error: state.get("error").set("Please enter your name"),
+        })
+      }
+
+      return state
     default:
       return state
   }
