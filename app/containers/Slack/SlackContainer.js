@@ -36,6 +36,7 @@ SlackContainer.propTypes = {
   success: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  validateFields: PropTypes.func.isRequired,
   updateFields: PropTypes.func.isRequired,
   postInvite: PropTypes.func.isRequired,
   fields: PropTypes.instanceOf(Map),
