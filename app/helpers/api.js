@@ -1,23 +1,16 @@
-import axios from 'axios'
-import { calendarAPI, slackAPI } from 'config/config'
+import axios from "axios"
+import { calendarAPI, slackAPI, isProd } from "config/config"
+
+const HOST = isProd ? slackAPI : ""
 
 export const TDD = true
 
-export const fetchCalendarData = () => (
-  axios.get(calendarAPI)
-    .then(({ data }) => data)
-)
+export const fetchCalendarData = () =>
+  axios.get(calendarAPI).then(({ data }) => data)
 
-export const postSlackInvite = (invite) => (
-  axios.post(slackAPI, { invite })
-    .then((res) => {
-      if(!res.ok) {
-        throw Error(res.data)
-      }
+export const postSlackInvite = async invite => {
+  const res =
+    (await axios.post(`${HOST}/api/invite`, invite).catch(() => {})) || {}
 
-      return res.json()
-    })
-    .catch((err) => {
-      return err
-    })
-)
+  return res
+}

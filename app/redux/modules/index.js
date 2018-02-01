@@ -1,2 +1,2 @@
-export calendar from './calendar'
-export slack from './slack'
+export calendar from "./calendar"
+export slack from "./slack"
