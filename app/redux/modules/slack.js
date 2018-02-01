@@ -1,39 +1,56 @@
-import { fromJS } from 'immutable'
-// import { postSlackInvite } from 'helpers/api'
+import { fromJS } from "immutable"
+import { postSlackInvite } from "helpers/api"
 
-const POSTING_SLACK_INVITE = 'POSTING_SLACK_INVITE'
-const POSTING_SLACK_ERROR = 'POSTING_SLACK_ERROR'
-const POSTING_SLACK_SUCCESS = 'POSTING_SLACK_SUCCESS'
-const POSTING_SLACK_PLACEHOLDER = 'POSTING_SLACK_PLACEHOLDER' 
+const POSTING_SLACK_INVITE = "POSTING_SLACK_INVITE"
+const POSTING_SLACK_ERROR = "POSTING_SLACK_ERROR"
+const POSTING_SLACK_SUCCESS = "POSTING_SLACK_SUCCESS"
+const UPDATE_SLACK_FIELDS = "UPDATE_SLACK_FIELDS"
 
-// const postingSlackInvite = () => ({
-//   type: POSTING_SLACK_INVITE,
-// })
+export const updateFields = ({ name, value }) => ({
+  type: UPDATE_SLACK_FIELDS,
+  name,
+  value,
+})
 
-// const postingSlackError = (err) => ({
-//   type: POSTING_SLACK_ERROR,
-//   error: err,
-// })
+const postingSlackInvite = () => ({
+  type: POSTING_SLACK_INVITE,
+})
 
-// const postingSlackSuccess = (data) => ({
-//   type: POSTING_SLACK_SUCCESS,
-//   events: data,
-// })
+const postingSlackError = error => ({
+  type: POSTING_SLACK_ERROR,
+  error,
+})
 
-export const postAndHandleEvents = () => (
-  // (dispatch) => {
-  //   dispatch(postingSlackInvite())
-  //   postSlackInvite()
-  //     .then((res) => dispatch(postingSlackSuccess(res)))
-  //     .catch((err) => dispatch(postingSlackError(err)))
-  // }
-  { type: POSTING_SLACK_PLACEHOLDER }
-)
+const postingSlackSuccess = data => ({
+  type: POSTING_SLACK_SUCCESS,
+  events: data,
+})
+
+export const postInvite = () => async (dispatch, getState) => {
+  const fields = getState().slack.get("fields")
+
+  dispatch(postingSlackInvite())
+
+  const res = await postSlackInvite({
+    first_name: fields.get("name"),
+    email: fields.get("email"),
+  })
+
+  if (res === {}) {
+    dispatch(postingSlackSuccess())
+  } else {
+    dispatch(postingSlackError("Failed Submission"))
+  }
+}
 
 const initialState = fromJS({
   success: false,
-  error: '',
+  error: "",
   isFetching: false,
+  fields: {
+    name: "",
+    email: "",
+  },
 })
 
 const slack = (state = initialState, action) => {
@@ -52,9 +69,10 @@ const slack = (state = initialState, action) => {
         isFetching: false,
         success: true,
       })
-    case POSTING_SLACK_PLACEHOLDER:
-      // console.log('Request sent off to API')
-      return state
+    case UPDATE_SLACK_FIELDS:
+      return state.merge({
+        fields: state.get("fields").set(action.name, action.value),
+      })
     default:
       return state
   }
