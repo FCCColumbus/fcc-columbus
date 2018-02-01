@@ -7,13 +7,23 @@ import * as slackActionCreators from 'redux/modules/slack'
 import { Slack } from 'components'
 
 class SlackContainer extends Component {
-  handleOnChange() {
-    
+  constructor() {
+    super()
+    this.state = {
+      email: '',
+      firstName: '',
+    }
+  }
+  handleOnChange(e) {
+    const newValue = e.target.value
+    const element = e.target.id
+
+    this.setState({ [element]: newValue })
   }
 
   render () {
     return (
-      <Slack post={this.props.postAndHandleEvents} handleOnChange={this.handleOnChange} />
+      <Slack post={this.props.postAndHandleEvents} handleOnChange={this.handleOnChange.bind(this)} />
     )
   }
 }
@@ -29,7 +39,6 @@ const mapStateToProps = ({ slack }) => ({
   success: slack.get('success'),
   error: slack.get('error'),
   isFetching: slack.get('isFetching'),
-  data: slack.get('data'),
 })
 
 const mapDispatchToProps = (dispatch) => (

@@ -34,10 +34,6 @@ const initialState = fromJS({
   success: false,
   error: '',
   isFetching: false,
-  data: {
-    email: '',
-    firstName: '',
-  },
 })
 
 const slack = (state = initialState, action) => {
