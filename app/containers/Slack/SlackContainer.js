@@ -9,7 +9,8 @@ import { Slack } from "components"
 
 class SlackContainer extends Component {
   handlePost() {
-    this.props.postInvite()
+    this.props.validateFields()
+    if(!this.props.error) this.props.postInvite()
   }
 
   handleInputChange(e) {

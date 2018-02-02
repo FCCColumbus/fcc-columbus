@@ -25,7 +25,7 @@ const Slack = ({
           name='email'
           className={styles.input}
           type='text'
-          onKeyUp={e => (e.keyCode === 13 ? handlePost() : false)}
+          onKeyUp={e => (e.keyCode === 13 && enableSubmit ? handlePost() : false)}
           onChange={e => handleInputChange(e)}/>
         <label htmlFor='name' className={styles.label}>
           What is your first name?
@@ -35,13 +35,14 @@ const Slack = ({
           name='name'
           className={styles.input}
           type='text'
-          onKeyUp={e => (e.keyCode === 13 ? handlePost() : false)}
+          onKeyUp={e => (e.keyCode === 13 && enableSubmit ? handlePost() : false)}
           onChange={e => handleInputChange(e)}/>
         <button
           className={`${styles.btn} ${styles.submit} ${!enableSubmit &&
             styles.disable}`}
           type='submit'
-          onClick={() => (enableSubmit ? handlePost() : false)}>
+          onClick={() => (enableSubmit ? handlePost() : false)}
+          onKeyUp={e => (e.keyCode === 13 && enableSubmit ? handlePost() : false)}>
           Submit
         </button>
         <div className={styles.status}>
@@ -53,7 +54,7 @@ const Slack = ({
               " Reporting in, Boss, and standing by."}
           </p>
           {success && <p>successful submission</p>}
-          {error && <p>failed submission</p>}
+          {error && <p>{error}</p>}
           {isFetching && <p>Posting...</p>}
         </div>
       </div>

@@ -8,10 +8,8 @@ const POSTING_SLACK_SUCCESS = "POSTING_SLACK_SUCCESS"
 const UPDATE_SLACK_FIELDS = "UPDATE_SLACK_FIELDS"
 const VALIDATE_SLACK_FIELDS = "VALIDATE_SLACK_FIELDS"
 
-export const validateFields = ({name, value}) => ({
+export const validateFields = () => ({
   type: VALIDATE_SLACK_FIELDS,
-  name,
-  value,
 })
 
 export const updateFields = ({ name, value }) => ({
@@ -82,15 +80,15 @@ const slack = (state = initialState, action) => {
         fields: state.get("fields").set(action.name, action.value),
       })
     case VALIDATE_SLACK_FIELDS:
-      if(!isEmail(action.email)) {
+      if(!isEmail(state.get('fields').get('email'))) {
         return state.merge({
-          error: state.get("error").set("Please enter a valid email"),
+          error: "Please enter a valid email",
         })
       }
 
-      if(!action.name.length) {
+      if(!state.get('fields').get('name')) {
         return state.merge({
-          error: state.get("error").set("Please enter your name"),
+          error: "Please enter your name",
         })
       }
 
