@@ -9,8 +9,8 @@ import { Slack } from "components"
 
 class SlackContainer extends Component {
   handlePost() {
-    this.props.validateFields()
-    if(!this.props.error) this.props.postInvite()
+    // this.props.validateFields()
+    this.props.postInvite()
   }
 
   handleInputChange(e) {
@@ -26,6 +26,7 @@ class SlackContainer extends Component {
         isFetching={this.props.isFetching}
         success={this.props.success}
         error={this.props.error}
+        message={this.props.message}
         handlePost={() => this.handlePost()}
         fields={this.props.fields}
         handleInputChange={e => this.handleInputChange(e)}/>
@@ -35,9 +36,9 @@ class SlackContainer extends Component {
 
 SlackContainer.propTypes = {
   success: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
   error: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  validateFields: PropTypes.func.isRequired,
   updateFields: PropTypes.func.isRequired,
   postInvite: PropTypes.func.isRequired,
   fields: PropTypes.instanceOf(Map),
@@ -49,6 +50,7 @@ const mapStateToProps = ({ slack }) => ({
   isFetching: slack.get("isFetching"),
   updateFields: slack.get("updateFields"),
   fields: slack.get("fields"),
+  message: slack.get("message"),
 })
 
 const mapDispatchToProps = dispatch =>
