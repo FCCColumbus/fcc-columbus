@@ -10,6 +10,7 @@ const Slack = ({
   error,
   isFetching,
   fields,
+  message,
 }) => {
   const enableSubmit =
     fields.get("name").length > 0 && fields.get("email").length > 0
@@ -53,7 +54,7 @@ const Slack = ({
               !isFetching &&
               " Reporting in, Boss, and standing by."}
           </p>
-          {success && <p>successful submission</p>}
+          {success && <p>{ message }</p>}
           {error && <p>{error}</p>}
           {isFetching && <p>Posting...</p>}
         </div>
@@ -66,6 +67,7 @@ Slack.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   handlePost: PropTypes.func.isRequired,
   success: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
   error: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
   fields: PropTypes.instanceOf(Map),
