@@ -27,6 +27,7 @@
 }
 .item {
   width: 25%;
+  min-width: 200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -35,10 +36,8 @@
 .logo {
   width: 100%;
   text-align: center;
-  flex: auto;
 }
 .image {
-  flex: auto;
   width: 100%;
   height: auto;
   max-width: 265px;
