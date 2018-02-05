@@ -53,3 +53,4 @@ dist
 /lib/
 /coverage/
 .env
+.vscode
