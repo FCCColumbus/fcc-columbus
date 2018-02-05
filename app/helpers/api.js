@@ -10,7 +10,7 @@ export const fetchCalendarData = () =>
 
 export const postSlackInvite = async invite => {
   const res =
-    (await axios.post(`${HOST}/api/invite`, invite).catch(() => {})) || {}
+    (await axios.post(`${HOST}/api/invite`, invite).catch(err => err.response )) || {}
 
   return res
 }
