@@ -1,0 +1,59 @@
+@import '~sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.innerContainer {
+  @include gridPadding;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label,
+.input {
+  margin-bottom: 10px;
+}
+
+.status {
+  margin: 35px 0;
+  display: flex;
+
+  & p:first-child {
+    margin-right: 15px;
+  }
+}
+
+.submit {
+  margin-top: 35px;
+}
+
+.disable {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@media screen and (max-width: 960px) {
+
+}
+
+@media screen and (max-width: 680px) {
+
+}
+
+@media screen and (max-width: 580px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
