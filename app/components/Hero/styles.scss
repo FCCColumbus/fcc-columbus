@@ -58,10 +58,11 @@
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   height: 80px;
   padding: 0 30px;
-  display: flex;
-  line-height: 80px;
   font-size: 30px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
   transition: $dTransition;
   box-shadow: inset 0px -72px 68px -82px rgba(0,0,0,0.75);
   &:hover { box-shadow: inset 0px -72px 68px -72px rgba(0,0,0,0.75); }
