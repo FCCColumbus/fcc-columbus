@@ -1,5 +1,6 @@
 import { fromJS } from "immutable"
 import { postSlackInvite } from "helpers/api"
+import { errorSlackMessages } from "config/constants"
 import isEmail from "validator/lib/isEmail"
 
 const POSTING_SLACK_INVITE = "POSTING_SLACK_INVITE"
@@ -45,11 +46,10 @@ export const postInvite = () => async (dispatch, getState) => {
     email: fields.get("email"),
   }) : { error }
 
-  if (res.status) {
+  if (res.status !== 500) {
     dispatch(postingSlackSuccess())
   } else {
-    console.log(res)
-    dispatch(postingSlackError(res.error))
+    dispatch(postingSlackError(errorSlackMessages[res.data.error]))
   }
 }
 
