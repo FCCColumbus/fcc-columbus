@@ -1,8 +1,10 @@
 import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
 
-import { TDD, fetchCalendarData, postSlackInvite } from "./api"
-import { calendarAPI, slackAPI } from "config/config"
+// import { TDD, fetchCalendarData, postSlackInvite } from "./api"
+// import { calendarAPI, slackAPI } from "config/config"
+import { TDD, fetchCalendarData } from "./api"
+import { calendarAPI } from "config/config"
 
 test("TDD should equal true", () => {
   expect(TDD).toBe(true)
@@ -52,22 +54,22 @@ describe("fetchCalendarData", () => {
   })
 })
 
-describe("postSlackInvite", () => {
-  it("post field params to slack invite endpoint", done => {
-    let mock = new MockAdapter(axios)
-    const invite = {
-      name: "John",
-      email: "johndoe@test.com",
-    }
-    const data = {}
+// describe("postSlackInvite", () => {
+//   // it("post field params to slack invite endpoint", done => {
+//   //   let mock = new MockAdapter(axios)
+//   //   const invite = {
+//   //     name: "John",
+//   //     email: "johndoe@test.com",
+//   //   }
+//   //   const data = {}
 
-    mock.onPost(slackAPI, invite).reply(200, {
-      data: {},
-    })
+//   //   mock.onPost(slackAPI, invite).reply(200, {
+//   //     ,
+//   //   })
 
-    postSlackInvite().then(res => {
-      expect(res).toEqual(data)
-      done()
-    })
-  })
-})
+//   //   postSlackInvite().then(res => {
+//   //     expect(res).toEqual(data)
+//   //     done()
+//   //   })
+//   // })
+// })
