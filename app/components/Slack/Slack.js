@@ -51,11 +51,9 @@ const Slack = ({
             STATUS:
             {!success &&
               !error &&
-              !isFetching &&
-              " Reporting in, Boss, and standing by."}
+              !isFetching }
           </p>
-          {success && <p>{ message }</p>}
-          {error && <p>{error}</p>}
+          <p>{ message }</p>
           {isFetching && <p>Posting...</p>}
         </div>
       </div>

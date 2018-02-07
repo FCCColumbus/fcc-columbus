@@ -46,16 +46,19 @@ export const postInvite = () => async (dispatch, getState) => {
     email: fields.get("email"),
   }) : { error }
 
-  if (res.status !== 500) {
+  
+
+  if (res.status !== 500 && res.status) {
     dispatch(postingSlackSuccess())
   } else {
-    dispatch(postingSlackError(errorSlackMessages[res.data.error]))
+    res.data ? dispatch(postingSlackError(errorSlackMessages[res.data.error])) :
+    dispatch(postingSlackError(errorSlackMessages[error]))
   }
 }
 
 const initialState = fromJS({
   success: false,
-  message: "",
+  message: "Awaiting input...",
   error: "",
   isFetching: false,
   fields: {
@@ -71,10 +74,10 @@ const slack = (state = initialState, action) => {
         isFetching: true,
       })
     case POSTING_SLACK_ERROR:
+
       return state.merge({
         isFetching: false,
-        error: action.error,
-        message: "",
+        message: action.error,
       })
     case POSTING_SLACK_SUCCESS:
       return state.merge({
@@ -89,17 +92,17 @@ const slack = (state = initialState, action) => {
     case VALIDATE_SLACK_FIELDS:
       if(!isEmail(state.get('fields').get('email'))) {
         return state.merge({
-          error: "Please enter a valid email",
+          error: "invalid_email",
         })
       }
 
       if(!state.get('fields').get('name')) {
         return state.merge({
-          error: "Please enter your name",
+          error: "empty_name",
         })
       }
 
-      return state.merge({ error: "" })
+      return state.merge({ error: "", message: "" })
     default:
       return state
   }
