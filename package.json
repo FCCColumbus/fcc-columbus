@@ -9,7 +9,7 @@
   "scripts": {
     "start": "yarn dev:start",
     "dev:start": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server\"",
-    "build": "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
+    "prod:build": "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
     "serve": "yarn build; serve ./dist -s -o",
     "lint": "eslint app webpack.config.babel.js --ext .js,.jsx",
     "fix": "eslint app webpack.config.babel.js --ext .js,.jsx --fix",
