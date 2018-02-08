@@ -1,9 +1,9 @@
 {
-  "presets": ["env", "stage-0", "react", "flow"],
+  "presets": ["env", "react"],
   "plugins": [
+    "transform-object-rest-spread",
+    "transform-export-extensions",
     "syntax-dynamic-import",
-    "babel-plugin-transform-react-jsx",
-    "transform-object-assign",
     [
       "transform-runtime",
       {
@@ -17,6 +17,7 @@
       "presets": ["react-hmre"]
     },
     "production": {
+      "presets": ["stage-3"],
       "plugins": ["transform-react-remove-prop-types"]
     }
   }

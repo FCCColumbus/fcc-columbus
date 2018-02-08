@@ -3,7 +3,7 @@
 const HeroStore = {
   title: {
     focused: 'FOCUSED TITLE',
-    'text': 'sample phrase',
+    text: 'sample phrase',
   },
   ctaLink: '/learn',
   body: 'body copy here',
