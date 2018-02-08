@@ -1,12 +1,6 @@
-import React, { Component } from 'react'
-import { Resources } from '../../components'
+import React from 'react'
+import { Resources } from 'components'
 
-class ResourcesContainer extends Component {
-  render () {
-    return (
-      <Resources />
-    )
-  }
-}
+const ResourcesContainer = () => <Resources />
 
 export default ResourcesContainer

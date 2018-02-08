@@ -3,7 +3,4 @@ import { calendarAPI } from 'config/config'
 
 export const TDD = true
 
-export const fetchCalendarData = () => (
-  axios.get(calendarAPI)
-    .then(({ data }) => data)
-)
+export const fetchCalendarData = () => axios.get(calendarAPI).then(({ data }) => data)

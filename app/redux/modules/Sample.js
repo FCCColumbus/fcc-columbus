@@ -3,7 +3,7 @@
 import { fetchHeroData } from 'helpers/api'
 import { fromJS } from 'immutable'
 
-const UPDATE_HERO_WAYPOINT ='UPDATE_HERO_WAYPOINT'
+const UPDATE_HERO_WAYPOINT = 'UPDATE_HERO_WAYPOINT'
 const FETCHING_HERO = 'FETCHING_HERO'
 const FETCHING_HERO_ERROR = 'FETCHING_HERO_ERROR'
 const FETCHING_HERO_SUCCESS = 'FETCHING_HERO_SUCCESS'
@@ -30,14 +30,12 @@ const fetchingHeroSuccess = ({ title, ctaLink, body, footer }) => ({
   footer,
 })
 
-export const fetchAndHandleHero = () => (
-  (dispatch) => {
-    dispatch(fetchingHero())
-    fetchHeroData()
-      .then((data) => dispatch(fetchingHeroSuccess(data)))
-      .catch((error) => dispatch(fetchingHeroError(error)))
-  }
-)
+export const fetchAndHandleHero = () => (dispatch) => {
+  dispatch(fetchingHero())
+  fetchHeroData()
+    .then((data) => dispatch(fetchingHeroSuccess(data)))
+    .catch((error) => dispatch(fetchingHeroError(error)))
+}
 
 const initialState = fromJS({
   isFetching: true,

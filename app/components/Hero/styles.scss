@@ -5,66 +5,78 @@
 // ------------------
 
 .index {
-  margin: 70px auto 0 auto;
   width: 100%;
   max-width: 1440px;
+  margin: 70px auto 0;
 }
+
 .hero {
   width: 100%;
   height: auto;
   margin-bottom: 50px;
 }
+
 .wrap {
   position: relative;
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .title {
   width: 100%;
   margin: 20px auto;
+
   & h1 {
-    text-align: center;
     font-size: 50px;
+    text-align: center;
   }
 }
+
 .logo {
-  margin: 50px auto;
   width: 100%;
+  flex: auto;
+  margin: 50px auto;
   text-align: center;
-  flex: auto;
 }
+
 .image {
-  flex: auto;
   width: 80%;
   max-width: 450px;
   max-height: 450px;
+  flex: auto;
 }
+
 .info {
   width: 100%;
   margin: 20px auto;
+
   & h2 {
-    text-align: center;
     font-size: 40px;
+    text-align: center;
   }
 }
+
 .joinNow {
-  background-color: $indexBtnBG;
-  background-image: linear-gradient($indexBtn2BG, $indexBtnBG);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffcc4d, endColorstr=#ffac33, GradientType=0)";
-  border-color: $indexBtnBorder;
-  color: $indexBtn !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  display: flex;
   height: 80px;
   padding: 0 30px;
-  display: flex;
-  line-height: 80px;
-  font-size: 30px;
+  background-color: $indexBtnBG;
+  background-image: linear-gradient($indexBtn2BG, $indexBtnBG);
+  border-color: $indexBtnBorder;
   border-radius: 10px;
+  box-shadow: inset 0 -72px 68px -82px rgba(0, 0, 0, 0.75);
+  color: $indexBtn !important;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffcc4d, endColorstr=#ffac33, GradientType=0)';
+  font-size: 30px;
+  line-height: 80px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   transition: $dTransition;
-  box-shadow: inset 0px -72px 68px -82px rgba(0,0,0,0.75);
-  &:hover { box-shadow: inset 0px -72px 68px -72px rgba(0,0,0,0.75); }
+
+  &:hover {
+    box-shadow: inset 0 -72px 68px -72px rgba(0, 0, 0, 0.75);
+  }
 }
 
 // ------------------
@@ -74,40 +86,64 @@
 @media screen and (max-width: 960px) {
   .index {
     width: 96%;
+
     .admins-admin,
-    .linksItem { width: 50%; }
-    .title h1 { font-size: 40px; }
-    .info h2 { font-size: 30px; }
+    .linksItem {
+      width: 50%;
+    }
+
+    .title h1 {
+      font-size: 40px;
+    }
+
+    .info h2 {
+      font-size: 30px;
+    }
+
     .adminsTitle h2,
     .ctaTitle h2,
-    .linksTitle h2 { font-size: 24px; }
-    .ctaItem {
-      font-size: 18px;
-      margin-bottom: 10px;
-      padding-left: 30px;
+    .linksTitle h2 {
+      font-size: 24px;
     }
-    .linksName h2 { font-size: 20px; }
+
+    .ctaItem {
+      padding-left: 30px;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .linksName h2 {
+      font-size: 20px;
+    }
   }
 }
 
 @media screen and (max-width: 680px) {
   .index {
     .admin {
-      margin: 20px auto;
       width: 100%;
+      margin: 20px auto;
     }
-    .linksIcon{
-        font-size: 7em;
-        color: $dark-green;
+
+    .linksIcon {
+      color: $dark-green;
+      font-size: 7em;
     }
-    .joinNow { font-size: 24px; }
+
+    .joinNow {
+      font-size: 24px;
+    }
   }
 }
 
 @media screen and (max-width: 580px) {
-  .joinNow { font-size: 24px; }
+  .joinNow {
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-  .joinNow { font-size: 18px; }
+  .joinNow {
+    font-size: 18px;
+  }
 }

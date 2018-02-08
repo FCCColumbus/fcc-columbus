@@ -5,50 +5,61 @@
 // ------------------
 
 .links {
-  margin: 50px 0;
   width: 100%;
+  margin: 50px 0;
 }
+
 .icon {
-  font-size: 10em !important;
   color: $dark-green;
+  font-size: 10em !important;
 }
+
 .wrap {
   position: relative;
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .title {
   width: 100%;
-  margin: 20px auto 40px auto;
+  margin: 20px auto 40px;
   text-align: center;
-  & h2 { font-size: 30px; }
+
+  & h2 {
+    font-size: 30px;
+  }
 }
+
 .item {
-  width: 25%;
   display: flex;
+  width: 25%;
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 30px;
 }
+
 .logo {
   width: 100%;
+  flex: auto;
   text-align: center;
-  flex: auto;
 }
+
 .image {
-  flex: auto;
   width: 100%;
-  height: auto;
   max-width: 265px;
+  height: auto;
+  flex: auto;
 }
+
 .name {
   width: 100%;
+
   & h2 {
     padding: 20px 0;
-    text-align: center;
     font-size: 24px;
+    text-align: center;
   }
 }
 
@@ -57,22 +68,28 @@
 // ------------------
 
 @media screen and (max-width: 960px) {
-  .item { width: 50%; }
-  .title h2 { font-size: 24px; }
-  .name h2 { font-size: 18px; }
+  .item {
+    width: 50%;
+  }
+
+  .title h2 {
+    font-size: 24px;
+  }
+
+  .name h2 {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 680px) {
-  .icon{
-    font-size: 7em;
+  .icon {
     color: $dark-green;
+    font-size: 7em;
   }
 }
 
 @media screen and (max-width: 580px) {
-
 }
 
 @media screen and (max-width: 480px) {
-
 }

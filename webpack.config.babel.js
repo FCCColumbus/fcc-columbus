@@ -3,27 +3,74 @@ import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
-import GitRevisionPlugin from 'git-revision-webpack-plugin'
 import WebpackChunkHash from 'webpack-chunk-hash'
 import InlineManifestWebpackPlugin from 'inline-manifest-webpack-plugin'
-import CompressionPlugin from 'compression-webpack-plugin'
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 import autoprefixer from 'autoprefixer'
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import StyleLintPlugin from 'stylelint-webpack-plugin'
+import HappyPack from 'happypack'
+import WebpackBuildNotifierPlugin from 'webpack-build-notifier'
+// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer"
 
-import packageJson from './package.json'
 import { WDS_PORT } from './app/config/config'
-const LAUNCH_COMMAND = process.env.npm_lifecycle_event
-const isProduction = LAUNCH_COMMAND === 'prod:build'
-const styles = 'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!sass-loader'
 
+const LAUNCH_COMMAND = process.env.npm_lifecycle_event
+const isProduction = LAUNCH_COMMAND === 'build'
 process.env.BABEL_ENV = LAUNCH_COMMAND
 
 const PATHS = {
   app: path.resolve(__dirname, 'app'),
   build: path.resolve(__dirname, 'dist'),
 }
+
+const devStyles = [
+  'style-loader',
+  'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+  'sass-loader',
+]
+
+const prodStyles = [
+  'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+  { loader: 'postcss-loader', options: { plugins: [autoprefixer] } },
+  'sass-loader',
+]
+
+const stylelintConfig = new StyleLintPlugin({
+  fix: false,
+  cache: true,
+  context: 'app/sharedStyles/',
+})
+
+const happyThreadPool = HappyPack.ThreadPool({ size: 5 })
+const happyPackInstances = [
+  new HappyPack({
+    threadPool: happyThreadPool,
+    id: 'js',
+    loaders: [
+      'babel-loader?cacheDirectory',
+      {
+        loader: 'eslint-loader', // webpack will hit esliint-loader first (reverse index order) - use `pre` if you are shady of loaders order - @JW
+        options: {
+          fix: true,
+          cache: true,
+          failOnWarning: false,
+          failOnError: false,
+        },
+      },
+    ],
+  }),
+  new HappyPack({
+    threadPool: happyThreadPool,
+    id: 'css',
+    loaders: isProduction ? ['css-loader'] : ['style-loader', 'css-loader'],
+  }),
+  new HappyPack({
+    threadPool: happyThreadPool,
+    id: 'assets',
+    loaders: ['file-loader?hash=sha512&digest=hex&name=images/[name].[hash:8].[ext]'],
+  }),
+]
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: `${PATHS.app}/index.ejs`,
@@ -37,25 +84,47 @@ const productionPlugin = new webpack.DefinePlugin({
   },
 })
 
-const BrowserSyncPluginConfig = new BrowserSyncPlugin({
-  host: 'localhost',
-  proxy: `http://localhost:${WDS_PORT}`,
-  open: true,
-  ghostMode: {
-    clicks: true,
-    forms: true,
-    scroll: true,
+const BrowserSyncPluginConfig = new BrowserSyncPlugin(
+  {
+    host: 'localhost',
+    proxy: `http://localhost:${WDS_PORT}/`,
+    open: true,
+    ghostMode: {
+      clicks: true,
+      forms: true,
+      scroll: true,
+    },
+    ghostMode: true, // eslint-disable-line no-dupe-keys
+    notify: false,
   },
-  ghostMode: true, // eslint-disable-line no-dupe-keys
-}, {
-  // plugin options
-  reload: false, // prevent BrowserSync from reloading page and let WDS take care of it
-})
+  {
+    // plugin options
+    reload: false, // prevent BrowserSync from reloading page and let WDS take care of it
+  },
+)
+
+// const bundlerConfig = new BundleAnalyzerPlugin({
+//   analyzerHost: "localhost",
+//   analyzerPort: 3002,
+//   openAnalyzer: false,
+// })
 
 const base = {
   entry: {
     app: PATHS.app,
-    vendor: ['core-js/fn/promise', ...Object.keys(packageJson.dependencies).filter((el) => el !== 'font-awesome')],
+    vendor: [
+      'core-js/fn/string/includes',
+      'core-js/fn/object',
+      'axios',
+      'react',
+      'react-dom',
+      'react-router',
+      'immutable',
+      'react-redux',
+      'react-router-dom',
+      'redux',
+      'redux-thunk',
+    ],
   },
   output: {
     path: PATHS.build,
@@ -65,48 +134,31 @@ const base = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['happypack/loader?id=js'],
+      },
+      {
+        test: /\.css$/, // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/159
+        loaders: isProduction
+          ? ExtractTextPlugin.extract({ use: ['happypack/loader?id=css'] })
+          : ['happypack/loader?id=css'],
+      },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: isProduction
-          ? ExtractTextPlugin.extract({ fallback: 'style-loader', use: styles })
-          : [
-              { loader: 'style-loader' },
-              { loader: 'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]' },
-              { loader: 'postcss-loader', options: { plugins: [ autoprefixer ] } },
-              { loader: 'sass-loader' },
-            ],
+        loaders: isProduction
+          ? ExtractTextPlugin.extract({ fallback: 'style-loader', use: prodStyles })
+          : ['happypack/loader?id=scss'],
       },
-      { test: /\.(eot|ttf|woff|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=fonts/[name].[hash:8].[ext]' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.(eot|ttf|woff|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loaders: [`file-loader?name=fonts/[name]${isProduction ? '.[hash:8]' : ''}.[ext]`],
+      },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
-        loaders: [
-          'file-loader?name=images/[name].[hash:8].[ext]', {
-            loader: 'image-webpack-loader',
-            options: {
-              gifsicle: {
-                interlaced: false,
-              },
-              optipng: {
-                optimizationLevel: 7,
-              },
-              pngquant: {
-                quality: '65-90',
-                speed: 4,
-              },
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-              // Specifying webp here will create a WEBP version of your JPG/PNG images
-              webp: {
-                quality: 75,
-              },
-            },
-          },
-        ],
+        loaders: ['happypack/loader?id=assets'],
       },
     ],
   },
@@ -117,42 +169,54 @@ const base = {
 }
 
 const developmentConfig = {
-  devtool: 'cheap-module-inline-source-map',
+  cache: true,
+  devtool: 'inline-eval-cheap-source-map',
   devServer: {
     port: WDS_PORT,
     contentBase: `${PATHS.build}/public`,
     historyApiFallback: true,
+    stats: 'errors-only',
+    hot: true,
+    inline: true,
+    overlay: {
+      errors: true,
+      warnings: false,
+    },
+    proxy: {
+      '/api': {
+        target: '',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: { '/api': '' },
+      },
+    },
   },
   plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
+    ...happyPackInstances,
+    new HappyPack({
+      threadPool: happyThreadPool,
+      id: 'scss',
+      loaders: isProduction ? prodStyles : devStyles,
+    }),
     HtmlWebpackPluginConfig,
+    new webpack.NamedModulesPlugin(),
+    new CopyWebpackPlugin([{ from: 'public/' }]),
+    stylelintConfig,
     new webpack.HotModuleReplacementPlugin(),
     BrowserSyncPluginConfig,
-    new CopyWebpackPlugin([{ from: 'public/' }]),
-    // uncomment to view sizes of node_modules.
-    //
-    // new BundleAnalyzerPlugin({
-    //   analyzerHost: 'localhost',
-    //   analyzerPort: 3002,
-    //   openAnalyzer: true,
-    // }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
     }),
-    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de|en/),
   ],
 }
 
 const productionConfig = {
   devtool: 'cheap-module-source-map',
   plugins: [
+    ...happyPackInstances,
     productionPlugin,
-    new FaviconsWebpackPlugin('images/favicon.png'),
-    new webpack.BannerPlugin({
-      banner: new GitRevisionPlugin().version(),
-    }),
     new ExtractTextPlugin({
-      filename: 'styles.css',
+      filename: 'styles.[contenthash].css',
       allChunks: true,
     }),
     new webpack.HashedModuleIdsPlugin(),
@@ -162,8 +226,9 @@ const productionConfig = {
       name: ['vendor', 'manifest'],
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de|en/),
+    new FaviconsWebpackPlugin('images/favicon.png'),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
@@ -180,15 +245,15 @@ const productionConfig = {
       },
       exclude: [/\.min\.js$/gi], // skip pre-minified libs
     }),
-    new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0,
-    }),
     HtmlWebpackPluginConfig,
     new CopyWebpackPlugin([{ from: 'public/' }]),
+    stylelintConfig,
+    // bundlerConfig(),
+    new WebpackBuildNotifierPlugin({
+      title: 'FCC Columbus',
+      logo: path.resolve('./public/images/fccc-logo.png'),
+      suppressSuccess: true,
+    }),
   ],
 }
 

@@ -12,11 +12,8 @@ class CalendarContainer extends Component {
     this.props.fetchAndHandleEvents()
   }
 
-  render () {
-    return (this.props.isFetching
-      ? <p>Loading Events...</p>
-      : <Calendar events={this.props.events} />
-    )
+  render() {
+    return this.props.isFetching ? <p>Loading Events...</p> : <Calendar events={this.props.events} />
   }
 }
 
@@ -33,11 +30,6 @@ const mapStateToProps = ({ calendar }) => ({
   error: calendar.get('error'),
 })
 
-const mapDispatchToProps = (dispatch) => (
-  bindActionCreators(calendarActionCreators, dispatch)
-)
+const mapDispatchToProps = (dispatch) => bindActionCreators(calendarActionCreators, dispatch)
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CalendarContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer)

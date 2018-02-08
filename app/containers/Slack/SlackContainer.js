@@ -1,12 +1,6 @@
-import React, { Component } from 'react'
-import { ComingSoon } from '../../components'
+import React from 'react'
+import { ComingSoon } from 'components'
 
-class SlackContainer extends Component {
-  render () {
-    return (
-      <ComingSoon title='Slack' />
-    )
-  }
-}
+const SlackContainer = () => <ComingSoon title="Slack" />
 
 export default SlackContainer

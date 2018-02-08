@@ -1,24 +1,24 @@
 {
-  "presets": [
-    "env",
-    "stage-0",
-    "react",
-    "flow"
-  ],
+  "presets": ["env", "react"],
   "plugins": [
+    "transform-object-rest-spread",
+    "transform-export-extensions",
     "syntax-dynamic-import",
-    "babel-plugin-transform-react-jsx"
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
   ],
   "env": {
     "start": {
-      "presets": [
-        "react-hmre"
-      ]
+      "presets": ["react-hmre"]
     },
     "production": {
-      "plugins": [
-        "transform-react-remove-prop-types"
-      ]
+      "presets": ["stage-3"],
+      "plugins": ["transform-react-remove-prop-types"]
     }
   }
 }

@@ -5,36 +5,46 @@
 // ------------------
 
 .admins {
-  margin: 50px 0;
   width: 100%;
+  margin: 50px 0;
 }
+
 .wrap {
   position: relative;
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .title {
   width: 100%;
-  margin: 20px auto 40px auto;
+  margin: 20px auto 40px;
   text-align: center;
-  & h2 { font-size: 30px; }
+
+  & h2 {
+    font-size: 30px;
+  }
 }
+
 .admin {
-  width: 25%;
   display: flex;
+  width: 25%;
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 30px;
 }
-.face { border-radius: 10px; }
+
+.face {
+  border-radius: 10px;
+}
+
 .name,
 .job {
   width: 100%;
-  text-align: center;
   padding: 10px 0;
   font-size: 24px;
+  text-align: center;
 }
 
 // ------------------
@@ -42,22 +52,24 @@
 // ------------------
 
 @media screen and (max-width: 960px) {
-  .admins-title h2 { font-size: 24px; }
-  .admin {width: 50%;}
+  .admins-title h2 {
+    font-size: 24px;
+  }
+
+  .admin {
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 680px) {
   .admin {
-    margin: 20px auto;
     width: 100%;
+    margin: 20px auto;
   }
-  
 }
 
 @media screen and (max-width: 580px) {
-
 }
 
 @media screen and (max-width: 480px) {
-
 }
