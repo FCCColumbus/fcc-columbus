@@ -9,7 +9,7 @@ const fetchingCalendar = () => ({
   type: FETCHING_CALENDAR,
 })
 
-const fetchingCalendarError = (err) => ({
+const fetchingCalendarError = () => ({
   type: FETCHING_CALENDAR_ERROR,
   error: `'Uh-oh, the calendar didn't load correctly. Please contact the FCCC adminstrators`,
 })
@@ -19,14 +19,12 @@ const fetchingCalendarSuccess = (data) => ({
   events: data,
 })
 
-export const fetchAndHandleEvents = () => (
-  (dispatch) => {
-    dispatch(fetchingCalendar())
-    fetchCalendarData()
-      .then((res) => dispatch(fetchingCalendarSuccess(res)))
-      .catch((err) => dispatch(fetchingCalendarError(err)))
-  }
-)
+export const fetchAndHandleEvents = () => (dispatch) => {
+  dispatch(fetchingCalendar())
+  fetchCalendarData()
+    .then((res) => dispatch(fetchingCalendarSuccess(res)))
+    .catch((err) => dispatch(fetchingCalendarError(err)))
+}
 
 const initialState = fromJS({
   events: [],

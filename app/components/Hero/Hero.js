@@ -9,9 +9,11 @@ const Hero = () => (
         <h1>Free Code Camp Columbus</h1>
       </div>
       <div className={styles.logo}>
-        <img className={styles.image} src='images/fccc-logo.png' alt='Free Code Camp Logo' />
+        <img className={styles.image} src="images/fccc-logo.png" alt="Free Code Camp Logo" />
       </div>
-      <Link className={styles.joinNow} to='/slack'>Join Our Slack Community!</Link>
+      <Link className={styles.joinNow} to="/slack">
+        Join Our Slack Community!
+      </Link>
     </div>
   </div>
 )
