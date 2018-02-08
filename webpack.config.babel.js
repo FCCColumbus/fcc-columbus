@@ -16,7 +16,7 @@ import WebpackBuildNotifierPlugin from 'webpack-build-notifier'
 import { WDS_PORT } from './app/config/config'
 
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event
-const isProduction = LAUNCH_COMMAND === 'build'
+const isProduction = LAUNCH_COMMAND === 'prod:build'
 process.env.BABEL_ENV = LAUNCH_COMMAND
 
 const PATHS = {
