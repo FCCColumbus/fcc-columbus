@@ -144,5 +144,8 @@
       "yarn lint:css",
       "git add"
     ]
+  },
+  "resolutions": {
+    "**/phantomjs-prebuilt": "2.1.8"
   }
 }
