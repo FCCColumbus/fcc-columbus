@@ -5,16 +5,16 @@
 // ------------------
 
 .break {
-  border: 0;
+  display: block;
   height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  border: 0;
   margin-top: 20px;
   margin-bottom: 20px;
-  display: block;
-  -webkit-margin-before: 0.5em;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
   -webkit-margin-after: 0.5em;
-  -webkit-margin-start: auto;
+  -webkit-margin-before: 0.5em;
   -webkit-margin-end: auto;
+  -webkit-margin-start: auto;
 }
 
 // ------------------
@@ -22,18 +22,13 @@
 // ------------------
 
 @media screen and (max-width: 960px) {
-
 }
 
 @media screen and (max-width: 680px) {
-
 }
 
 @media screen and (max-width: 580px) {
-
 }
 
 @media screen and (max-width: 480px) {
-
 }
-

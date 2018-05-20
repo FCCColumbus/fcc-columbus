@@ -13,14 +13,6 @@ import 'sharedStyles/theme.scss'
 
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
-const store = createStore(
-  combineReducers(reducers),
-  composeEnhancers(applyMiddleware(thunk))
-)
+const store = createStore(combineReducers(reducers), composeEnhancers(applyMiddleware(thunk)))
 
-ReactDOM.render(
-  <Provider store={store}>
-    {getRoutes(store)}
-  </Provider>,
-  document.getElementById('app')
-)
+ReactDOM.render(<Provider store={store}>{getRoutes(store)}</Provider>, document.getElementById('app'))

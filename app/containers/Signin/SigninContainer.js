@@ -1,12 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { ComingSoon } from '../../components'
 
-class SignInContainer extends Component {
-  render () {
-    return (
-      <ComingSoon title='Account Management' />
-    )
-  }
-}
+const SignInContainer = () => <ComingSoon title="Account Management" />
 
 export default SignInContainer

@@ -5,32 +5,39 @@
 // ------------------
 
 .cta {
-  margin: 50px 0;
   width: 100%;
+  margin: 50px 0;
 }
+
 .wrap {
   position: relative;
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .title {
   width: 100%;
-  margin: 20px auto 40px auto;
+  margin: 20px auto 40px;
   text-align: center;
-  & h2 { font-size: 30px; }
+
+  & h2 {
+    font-size: 30px;
+  }
 }
+
 .item {
-  font-size: 24px;
   padding: 5px 0;
+  font-size: 24px;
+
   &::before {
-    font-family: 'FontAwesome';
-    display: inline-block;
     position: absolute;
+    display: inline-block;
     margin-left: -30px;
-    vertical-align: middle;
     content: '\f121';
+    font-family: 'FontAwesome';
+    vertical-align: middle;
   }
 }
 
@@ -39,22 +46,22 @@
 // ------------------
 
 @media screen and (max-width: 960px) {
-  .title h2 { font-size: 24px; }
+  .title h2 {
+    font-size: 24px;
+  }
+
   .item {
-    font-size: 18px;
-    margin-bottom: 10px;
     padding-left: 30px;
+    margin-bottom: 10px;
+    font-size: 18px;
   }
 }
 
 @media screen and (max-width: 680px) {
-
 }
 
 @media screen and (max-width: 580px) {
-
 }
 
 @media screen and (max-width: 480px) {
-
 }

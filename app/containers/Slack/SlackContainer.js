@@ -1,11 +1,11 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import { connect } from "react-redux"
-import { bindActionCreators } from "redux"
-import { Map } from "immutable"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Map } from 'immutable'
 
-import * as slackActionCreators from "redux/modules/slack"
-import { Slack } from "components"
+import * as slackActionCreators from 'redux/modules/slack'
+import { Slack } from 'components'
 
 class SlackContainer extends Component {
   handlePost() {
@@ -15,7 +15,7 @@ class SlackContainer extends Component {
 
   handleInputChange(e) {
     this.props.updateFields({
-      name: e.target.getAttribute("name"),
+      name: e.target.getAttribute('name'),
       value: e.target.value,
     })
   }
@@ -29,7 +29,8 @@ class SlackContainer extends Component {
         message={this.props.message}
         handlePost={() => this.handlePost()}
         fields={this.props.fields}
-        handleInputChange={e => this.handleInputChange(e)}/>
+        handleInputChange={(e) => this.handleInputChange(e)}
+      />
     )
   }
 }
@@ -45,15 +46,14 @@ SlackContainer.propTypes = {
 }
 
 const mapStateToProps = ({ slack }) => ({
-  success: slack.get("success"),
-  error: slack.get("error"),
-  isFetching: slack.get("isFetching"),
-  updateFields: slack.get("updateFields"),
-  fields: slack.get("fields"),
-  message: slack.get("message"),
+  success: slack.get('success'),
+  error: slack.get('error'),
+  isFetching: slack.get('isFetching'),
+  updateFields: slack.get('updateFields'),
+  fields: slack.get('fields'),
+  message: slack.get('message'),
 })
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(slackActionCreators, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators(slackActionCreators, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(SlackContainer)

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { Navigation } from 'components'
 
 class NavigationContainer extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       mobileActive: false,
@@ -31,33 +31,32 @@ class NavigationContainer extends Component {
     }
   }
 
-  componentDidMount () {
-   this.props.history.listen((location, action) => {
-      if(action === "POP") {
+  componentDidMount() {
+    this.props.history.listen((location, action) => {
+      if (action === 'POP') {
         this.setState({ mobileActive: false })
       }
     })
   }
 
-  handleMobile (e, close) {
+  handleMobile(e, close) {
     if (close && !this.state.mobileActive) {
       return
     }
 
     this.setState((prevState) => ({
-      mobileActive: prevState.mobileActive
-        ? !prevState.mobileActive
-        : true,
+      mobileActive: prevState.mobileActive ? !prevState.mobileActive : true,
     }))
   }
 
-  render () {
+  render() {
     return (
       <Navigation
         links={this.state.links}
         menu={this.state.menu}
         mobileActive={this.state.mobileActive}
-        handleMobile={(e, close) => this.handleMobile(e, close)} />
+        handleMobile={(e, close) => this.handleMobile(e, close)}
+      />
     )
   }
 }
