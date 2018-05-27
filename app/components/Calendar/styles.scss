@@ -68,6 +68,12 @@
   margin-top: 200px;
 }
 
+.logo {
+  width: auto;
+  max-width: 400px;
+  height: auto;
+}
+
 @media (max-width: 800px) {
   .events__card {
     width: 80vw;

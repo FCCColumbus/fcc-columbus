@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable'
 import { postSlackInvite } from 'helpers/api'
-import { errorSlackMessages } from 'config/constants'
+import { SlackStore } from 'stores'
 import isEmail from 'validator/lib/isEmail'
 
 const POSTING_SLACK_INVITE = 'POSTING_SLACK_INVITE'
@@ -52,8 +52,8 @@ export const postInvite = () => async (dispatch, getState) => {
     dispatch(postingSlackSuccess())
   } else {
     return res.data
-      ? dispatch(postingSlackError(errorSlackMessages[res.data.error]))
-      : dispatch(postingSlackError(errorSlackMessages[error]))
+      ? dispatch(postingSlackError(SlackStore[res.data.error]))
+      : dispatch(postingSlackError(SlackStore[error]))
   }
 }
 
