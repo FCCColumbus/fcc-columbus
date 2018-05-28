@@ -8,7 +8,9 @@ const ComingSoon = ({ title }) => (
       minHeight: '100vh',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center' }}>
+      alignItems: 'center',
+    }}
+  >
     {title} Page Coming Soon.
   </div>
 )

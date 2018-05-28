@@ -1,12 +1,6 @@
-import React, { Component } from 'react'
-import { Cta } from '../../components'
+import React from 'react'
+import { Cta } from 'components'
 
-class CtaContainer extends Component {
-  render () {
-    return (
-      <Cta />
-    )
-  }
-}
+const CtaContainer = () => <Cta />
 
 export default CtaContainer

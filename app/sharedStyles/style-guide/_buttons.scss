@@ -5,19 +5,20 @@
 // Note: Button mixins are located under file '_mixins.scss'
 
 .btn {
+  display: flex;
+  padding: 10px 20px;
   background-color: $indexBtnBG;
   background-image: linear-gradient($indexBtn2BG, $indexBtnBG);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffcc4d, endColorstr=#ffac33, GradientType=0)";
   border-color: $indexBtnBorder;
-  color: $indexBtn !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  padding: 10px 20px;
-  display: flex;
-  font-size: 18px;
   border-radius: 10px;
+  box-shadow: inset 0 -72px 44px -82px rgba(0, 0, 0, 0.75);
+  color: $indexBtn !important;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffcc4d, endColorstr=#ffac33, GradientType=0)';
+  font-size: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   transition: $dTransition;
-  box-shadow: inset 0px -72px 44px -82px rgba(0, 0, 0, 0.75);
+
   &:hover {
-    box-shadow: inset 0px -68px 68px -72px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0 -68px 68px -72px rgba(0, 0, 0, 0.75);
   }
 }
