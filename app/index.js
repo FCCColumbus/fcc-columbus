@@ -20,7 +20,6 @@ const store = createStore(combineReducers(reducers), composeEnhancers(applyMiddl
 
 const client = new ApolloClient({
   uri: 'https://graphql.fcccolumbus.com/graphql',
-  // uri: 'http://localhost:4000/graphql',
 })
 
 ReactDOM.render(
