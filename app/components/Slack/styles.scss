@@ -5,12 +5,13 @@
 // ------------------
 
 .container {
-  width: 100%;
   position: relative;
+  width: 100%;
 }
 
 .innerContainer {
   @include gridPadding;
+
   flex-direction: column;
   align-items: flex-start;
 }
@@ -21,8 +22,8 @@
 }
 
 .status {
-  margin: 35px 0;
   display: flex;
+  margin: 35px 0;
 
   & p:first-child {
     margin-right: 15px;
@@ -43,17 +44,13 @@
 // ------------------
 
 @media screen and (max-width: 960px) {
-
 }
 
 @media screen and (max-width: 680px) {
-
 }
 
 @media screen and (max-width: 580px) {
-
 }
 
 @media screen and (max-width: 480px) {
-
 }

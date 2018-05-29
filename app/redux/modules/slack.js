@@ -1,13 +1,13 @@
-import { fromJS } from "immutable"
-import { postSlackInvite } from "helpers/api"
-import { errorSlackMessages } from "config/constants"
-import isEmail from "validator/lib/isEmail"
+import { fromJS } from 'immutable'
+import { postSlackInvite } from 'helpers/api'
+import { SlackStore } from 'stores'
+import isEmail from 'validator/lib/isEmail'
 
-const POSTING_SLACK_INVITE = "POSTING_SLACK_INVITE"
-const POSTING_SLACK_ERROR = "POSTING_SLACK_ERROR"
-const POSTING_SLACK_SUCCESS = "POSTING_SLACK_SUCCESS"
-const UPDATE_SLACK_FIELDS = "UPDATE_SLACK_FIELDS"
-const VALIDATE_SLACK_FIELDS = "VALIDATE_SLACK_FIELDS"
+const POSTING_SLACK_INVITE = 'POSTING_SLACK_INVITE'
+const POSTING_SLACK_ERROR = 'POSTING_SLACK_ERROR'
+const POSTING_SLACK_SUCCESS = 'POSTING_SLACK_SUCCESS'
+const UPDATE_SLACK_FIELDS = 'UPDATE_SLACK_FIELDS'
+const VALIDATE_SLACK_FIELDS = 'VALIDATE_SLACK_FIELDS'
 
 const validateFields = () => ({
   type: VALIDATE_SLACK_FIELDS,
@@ -23,47 +23,48 @@ const postingSlackInvite = () => ({
   type: POSTING_SLACK_INVITE,
 })
 
-const postingSlackError = error => ({
+const postingSlackError = (error) => ({
   type: POSTING_SLACK_ERROR,
   error,
 })
 
-const postingSlackSuccess = success => ({
+const postingSlackSuccess = () => ({
   type: POSTING_SLACK_SUCCESS,
 })
 
 export const postInvite = () => async (dispatch, getState) => {
-  const fields = getState().slack.get("fields")
+  const fields = getState().slack.get('fields')
 
   dispatch(validateFields())
 
-  const error = getState().slack.get("error")
+  const error = getState().slack.get('error')
 
   dispatch(postingSlackInvite())
 
-  const res = !error ? await postSlackInvite({
-    first_name: fields.get("name"),
-    email: fields.get("email"),
-  }) : { error }
-
-  
+  const res = !error
+    ? await postSlackInvite({
+        first_name: fields.get('name'),
+        email: fields.get('email'),
+      })
+    : { error }
 
   if (res.status !== 500 && res.status) {
     dispatch(postingSlackSuccess())
   } else {
-    res.data ? dispatch(postingSlackError(errorSlackMessages[res.data.error])) :
-    dispatch(postingSlackError(errorSlackMessages[error]))
+    return res.data
+      ? dispatch(postingSlackError(SlackStore[res.data.error]))
+      : dispatch(postingSlackError(SlackStore[error]))
   }
 }
 
 const initialState = fromJS({
   success: false,
-  message: "Awaiting input...",
-  error: "",
+  message: 'Awaiting input...',
+  error: '',
   isFetching: false,
   fields: {
-    name: "",
-    email: "",
+    name: '',
+    email: '',
   },
 })
 
@@ -74,7 +75,6 @@ const slack = (state = initialState, action) => {
         isFetching: true,
       })
     case POSTING_SLACK_ERROR:
-
       return state.merge({
         isFetching: false,
         message: action.error,
@@ -83,26 +83,26 @@ const slack = (state = initialState, action) => {
       return state.merge({
         isFetching: false,
         success: true,
-        message: "Request for invite was successful! Please check your email to confirm!",
+        message: 'Request for invite was successful! Please check your email to confirm!',
       })
     case UPDATE_SLACK_FIELDS:
       return state.merge({
-        fields: state.get("fields").set(action.name, action.value),
+        fields: state.get('fields').set(action.name, action.value),
       })
     case VALIDATE_SLACK_FIELDS:
-      if(!isEmail(state.get('fields').get('email'))) {
+      if (!isEmail(state.get('fields').get('email'))) {
         return state.merge({
-          error: "invalid_email",
+          error: 'invalid_email',
         })
       }
 
-      if(!state.get('fields').get('name')) {
+      if (!state.get('fields').get('name')) {
         return state.merge({
-          error: "empty_name",
+          error: 'empty_name',
         })
       }
 
-      return state.merge({ error: "", message: "" })
+      return state.merge({ error: '', message: '' })
     default:
       return state
   }

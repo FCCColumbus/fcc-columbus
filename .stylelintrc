@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-scss", "stylelint-config-idiomatic-order", "./node_modules/prettier-stylelint/config.js"],
+  "rules": {
+    "indentation": 2,
+    "string-quotes": "single",
+    "block-no-empty": null,
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["composes"]
+      }
+    ]
+  }
+}
