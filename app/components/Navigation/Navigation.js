@@ -9,9 +9,9 @@ const Navigation = ({ links, menu, mobileActive, handleMobile }) => (
     <div className={styles.nav}>
       <div className={styles.wrap}>
         <div className={styles.logoWrap}>
-          <Link to='/' onClick={(e, close) => handleMobile(e, true)}>
+          <Link to="/" onClick={(e) => handleMobile(e, true)}>
             <div className={styles.logo}>
-              FreeCodeCamp<i className='fa fa-free-code-camp' />
+              FreeCodeCamp<i className="fa fa-free-code-camp" />
             </div>
           </Link>
         </div>
@@ -21,17 +21,13 @@ const Navigation = ({ links, menu, mobileActive, handleMobile }) => (
               <div className={styles.link}>{title}</div>
             </Link>
           ))}
-          <button
-            onClick={(e) => handleMobile(e)}
-            className={styles.menu}>
+          <button onClick={(e) => handleMobile(e)} className={styles.menu}>
             {menu}
           </button>
         </nav>
       </div>
     </div>
-    <div className={mobileActive
-      ? `${styles.show} ${styles.dropdown}`
-      : styles.dropdown}>
+    <div className={mobileActive ? `${styles.show} ${styles.dropdown}` : styles.dropdown}>
       <div className={styles.dropdownWrap}>
         {links.map(({ href, title }) => (
           <Link key={href} to={href} onClick={(e) => handleMobile(e)}>

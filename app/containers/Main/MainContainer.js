@@ -5,13 +5,13 @@ import { NavigationContainer } from 'containers'
 import styles from './styles.scss'
 
 class MainContainer extends Component {
+  componentDidMount() {}
+
   render() {
     return (
       <div className={styles.container}>
         <NavigationContainer />
-        <div className={styles.innerContainer}>
-          {this.props.children}
-        </div>
+        <div className={styles.innerContainer}>{this.props.children}</div>
       </div>
     )
   }
