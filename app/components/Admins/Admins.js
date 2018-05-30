@@ -1,73 +1,55 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import styles from './styles.scss'
 
-const Admins = () => (
+const sortArrayByName = (arr) =>
+  arr.sort((a, b) => {
+    a = a.name.last + a.name.first
+    b = b.name.last + b.name.first
+
+    if (a < b) return -1
+    if (a > b) return 1
+
+    return 0
+  })
+
+const Card = ({ name, title, url, image }) => (
+  <li className={styles.admin}>
+    <div className={styles.name}>
+      {name.first} {name.last}
+    </div>
+    <Link to={url} target="_blank" rel="noopener noreferrer" title={`Go to ${name.first}'s LinkedIn Profile`}>
+      <div className={styles.image}>
+        <img src={image} alt={`admin, ${name.first}.`} className={styles.face} />
+      </div>
+    </Link>
+    <div className={styles.job}>{title}</div>
+  </li>
+)
+
+Card.propTypes = {
+  name: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+}
+
+const Admins = ({ admins }) => (
   <div className={styles.admins}>
     <div className={styles.wrap}>
       <div className={styles.title}>
         <h2>Meet the Admins</h2>
       </div>
-      <div className={styles.admin}>
-        <div className={styles.name}>Justin Woodward</div>
-        <Link
-          to="https://www.linkedin.com/in/justin-woodward"
-          target="_blank"
-          rel="noopener noreferrer"
-          title={"Go to Justin's LinkedIn Profile"}
-        >
-          <div className={styles.image}>
-            <img src="images/justin.jpg" alt="admin, Justin." className={styles.face} />
-          </div>
-        </Link>
-        <div className={styles.job}>Software Developer</div>
-      </div>
-      <div className={styles.admin}>
-        <div className={styles.name}>Dan Stockham</div>
-        <Link
-          to="https://linkedin.com/in/danstockham"
-          target="_blank"
-          rel="noopener noreferrer"
-          title={"Go to Dan's LinkedIn Profile"}
-        >
-          <div className={styles.image}>
-            <img src="images/dan.jpg" alt="admin, Dan." className={styles.face} />
-          </div>
-        </Link>
-        <div className={styles.job}>Software Developer</div>
-      </div>
-      <div className={styles.admin}>
-        <div className={styles.name}>Kevin Bruland</div>
-        <Link to="https://www.linkedin.com/in/kevin-bruland-66083b132" target="_blank" rel="noopener noreferrer">
-          <div className={styles.image}>
-            <img
-              src="images/kevin.jpg"
-              alt="admin, Kevin."
-              className={styles.face}
-              title={"Go to Kevin's LinkedIn Profile"}
-            />
-          </div>
-        </Link>
-        <div className={styles.job}>Frontend Developer</div>
-      </div>
-      <div className={styles.admin}>
-        <div className={styles.name}>Sarah Bruland</div>
-        <Link to="https://www.linkedin.com/in/sarahlillybruland" target="_blank" rel="noopener noreferrer">
-          <div className={styles.image}>
-            <img
-              src="images/sarah.jpg"
-              alt="admin, Sarah."
-              className={styles.face}
-              title={"Go to Sarah's LinkedIn Profile"}
-            />
-          </div>
-        </Link>
-        <div className={styles.job}>Frontend Developer</div>
-      </div>
+      <ul className={styles.wrap}>
+        {sortArrayByName(admins).map((k) => <Fragment key={k.name.last + k.name.first}>{Card(k)}</Fragment>)}
+      </ul>
     </div>
   </div>
 )
 
-Admins.propTypes = {}
+Admins.propTypes = {
+  admins: PropTypes.any,
+}
 
 export default Admins
