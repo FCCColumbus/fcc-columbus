@@ -9,9 +9,8 @@
   "scripts": {
     "start": "yarn dev:start",
     "dev:start": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server\"",
-    "prod:build":
-      "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
-    "serve": "yarn prod:build && serve ./dist -s -o",
+    "prod:build": "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
+    "serve": "yarn prod:build && serve ./dist -s",
     "lint": "eslint app webpack.config.babel.js --ext .js,.jsx",
     "fix": "eslint app webpack.config.babel.js --ext .js,.jsx --fix",
     "lint:css": "stylelint ./app/**/*.scss",
@@ -28,26 +27,22 @@
   "engines": {
     "yarn": ">=1.0.2"
   },
-  "browserslist": ["> 1%"],
+  "browserslist": [
+    "> 1%"
+  ],
   "keywords": [],
   "author": "freecodecamp columbus contributors",
   "dependencies": {
-    "apollo-boost": "^0.1.6",
+    "apollo-boost": "^0.1.7",
     "axios": "^0.16.2",
     "font-awesome": "^4.7.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
-    "immutable": "^3.8.1",
     "react": "16",
     "react-apollo": "^2.1.4",
     "react-dom": "16",
     "react-helmet": "^5.2.0",
-    "react-redux": "^5.0.6",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "reselect": "^3.0.1",
-    "validator": "^9.4.0"
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
@@ -112,10 +107,9 @@
     "prettier-eslint-webpack-plugin": "^0.14.73",
     "prettier-stylelint": "^0.4.2",
     "prop-types": "^15.5.10",
-    "redux-devtools": "^3.4.1",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
-    "serve": "^6.4.9",
+    "serve": "^7.1.5",
     "style-loader": "^0.20.1",
     "stylelint": "^8.4.0",
     "stylelint-config-idiomatic-order": "^5.0.0",
@@ -130,11 +124,25 @@
     "webpack-manifest-plugin": "^1.3.2"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "json"],
-    "modulePaths": ["node_modules", "app"]
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "modulePaths": [
+      "node_modules",
+      "app"
+    ]
   },
   "lint-staged": {
-    "app/**/*.js": ["yarn fix", "yarn format:js", "git add"],
-    "app/sharedStyles/**/*.scss": ["yarn format:css", "yarn lint:css", "git add"]
+    "app/**/*.js": [
+      "yarn fix",
+      "yarn format:js",
+      "git add"
+    ],
+    "app/sharedStyles/**/*.scss": [
+      "yarn format:css",
+      "yarn lint:css",
+      "git add"
+    ]
   }
 }

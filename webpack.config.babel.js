@@ -105,18 +105,7 @@ const BrowserSyncPluginConfig = new BrowserSyncPlugin(
 const base = {
   entry: {
     app: PATHS.app,
-    vendor: [
-      'core-js/fn/object',
-      'axios',
-      'react',
-      'react-dom',
-      'react-router',
-      'immutable',
-      'react-redux',
-      'react-router-dom',
-      'redux',
-      'redux-thunk',
-    ],
+    vendor: ['core-js/fn/object', 'axios', 'react', 'react-dom', 'react-router', 'react-router-dom'],
   },
   output: {
     path: PATHS.build,
