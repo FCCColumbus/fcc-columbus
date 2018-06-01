@@ -1,65 +1,82 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Map } from 'immutable'
+// import PropTypes from 'prop-types'
+import gql from 'graphql-tag'
+import { Mutation } from 'react-apollo'
 import styles from './styles.scss'
 
-const Slack = ({ handleInputChange, handlePost, success, error, isFetching, fields, message }) => {
-  const enableSubmit = fields.get('name').length > 0 && fields.get('email').length > 0
+const handleInputRef = (node, data) => {
+  if (data && data.createSlackInvite.status) {
+    node.value = ''
+  }
+
+  return node
+}
+
+const SLACK_INVITE = gql`
+  mutation createSlackInvite($name: String!, $email: String!) {
+    createSlackInvite(name: $name, email: $email) {
+      message
+      status
+    }
+  }
+`
+const Slack = () => {
+  let nameInput
+  let emailInput
+  const message = 'Awaiting input...'
 
   return (
-    <div className={styles.container}>
-      <div className={styles.innerContainer}>
-        <label htmlFor="email" className={styles.label}>
-          Please enter the address where you like to receive the invite
-          <input
-            id="email"
-            name="email"
-            className={styles.input}
-            type="text"
-            onKeyUp={(e) => (e.keyCode === 13 && enableSubmit ? handlePost() : false)}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
-        <label htmlFor="name" className={styles.label}>
-          What is your first name?
-          <input
-            id="firstName"
-            name="name"
-            className={styles.input}
-            type="text"
-            onKeyUp={(e) => (e.keyCode === 13 && enableSubmit ? handlePost() : false)}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
-        <button
-          className={`${styles.btn} ${styles.submit} ${!enableSubmit && styles.disable}`}
-          type="submit"
-          onClick={() => (enableSubmit ? handlePost() : false)}
-          onKeyUp={(e) => (e.keyCode === 13 && enableSubmit ? handlePost() : false)}
-        >
-          Submit
-        </button>
-        <div className={styles.status}>
-          <p>
-            STATUS:
-            {!success && !error && !isFetching}
-          </p>
-          <p>{message}</p>
-          {isFetching && <p>Posting...</p>}
+    <Mutation mutation={SLACK_INVITE}>
+      {(createSlackInvite, { data, loading, error }) => (
+        <div className={styles.container}>
+          <form
+            className={styles.innerContainer}
+            onSubmit={(e) => {
+              e.preventDefault()
+              createSlackInvite({
+                variables: { name: nameInput.value, email: emailInput.value },
+              })
+            }}
+          >
+            <label htmlFor="email" className={styles.label}>
+              Please enter the address where you like to receive the invite
+              <input
+                id="email"
+                name="email"
+                className={styles.input}
+                type="text"
+                ref={(node) => (emailInput = handleInputRef(node, data))}
+              />
+            </label>
+            <label htmlFor="name" className={styles.label}>
+              What is your first name?
+              <input
+                id="firstName"
+                name="name"
+                className={styles.input}
+                type="text"
+                ref={(node) => (nameInput = handleInputRef(node, data))}
+              />
+            </label>
+            <button className={`${styles.btn} ${styles.submit}`} type="submit">
+              Submit
+            </button>
+            <div className={styles.status}>
+              <p>
+                <strong>Status: </strong>
+                {loading && 'Posting...'}
+                {data && data.createSlackInvite.message}
+                {error && error.message}
+                {!loading && !data && !error && message}
+              </p>
+            </div>
+          </form>
         </div>
-      </div>
-    </div>
+      )}
+    </Mutation>
   )
 }
 
-Slack.propTypes = {
-  handleInputChange: PropTypes.func.isRequired,
-  handlePost: PropTypes.func.isRequired,
-  success: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired,
-  error: PropTypes.string.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  fields: PropTypes.instanceOf(Map),
-}
+Slack.propTypes = {}
 
 export default Slack
