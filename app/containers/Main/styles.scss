@@ -6,13 +6,15 @@
 
 .container {
   width: 100%;
-  margin: 70px auto 0;
-  // max-width: 1440px;
+  margin: 50px auto 0;
 }
 
 .innerContainer {
   width: 90%;
   max-width: 1440px;
+  height: auto;
+  min-height: 100vh;
+  padding-top: 35px;
   margin: 0 auto;
 }
 
