@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import styles from './styles.scss'
 
 const Navigation = ({ links, menu, mobileActive, handleMobile }) => (
-  <div>
+  <Fragment>
     <div className={styles.nav}>
       <div className={styles.wrap}>
         <div className={styles.logoWrap}>
@@ -36,7 +36,7 @@ const Navigation = ({ links, menu, mobileActive, handleMobile }) => (
         ))}
       </div>
     </div>
-  </div>
+  </Fragment>
 )
 
 Navigation.propTypes = {
