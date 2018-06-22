@@ -4,9 +4,9 @@ const admins = [
       first: 'Justin',
       last: 'Woodward',
     },
-    title: 'Software Developer',
+    title: 'UI Engineer',
     url: 'https://www.linkedin.com/in/justin-woodward',
-    image: 'images/justin.jpg',
+    image: 'images/justin.jpeg',
   },
   {
     name: {

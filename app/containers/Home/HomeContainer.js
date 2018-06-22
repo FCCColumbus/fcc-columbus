@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { HeroContainer, AdminsContainer, CtaContainer, ResourcesContainer } from '../'
 import styles from './styles.scss'
 
 const HomeContainer = () => (
-  <div>
+  <Fragment>
     <HeroContainer />
     <hr className={styles.break} />
     <AdminsContainer />
@@ -11,7 +11,7 @@ const HomeContainer = () => (
     <CtaContainer />
     <hr className={styles.break} />
     <ResourcesContainer />
-  </div>
+  </Fragment>
 )
 
 export default HomeContainer

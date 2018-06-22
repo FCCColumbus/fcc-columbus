@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styles from './styles.scss'
 
 const Hero = () => (
-  <div className={styles.hero}>
+  <section className={styles.hero}>
     <div className={styles.wrap}>
       <div className={styles.title}>
         <h1>Free Code Camp Columbus</h1>
@@ -15,7 +15,7 @@ const Hero = () => (
         Join Our Slack Community!
       </Link>
     </div>
-  </div>
+  </section>
 )
 
 export default Hero
