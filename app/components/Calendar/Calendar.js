@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Query } from 'react-apollo'
@@ -21,8 +21,15 @@ const Events = () => (
     `}
   >
     {({ loading, error, data }) => {
-      if (loading) return 'loading'
-      if (error) return 'error'
+      if (loading || error || !data.events.length) {
+        let str = 'No events are scheduled at this time.'
+
+        if (loading) str = 'loading...'
+        if (error)
+          str = 'An error has occured while fetching our events. Feel free to report this issue to a group admin.'
+
+        return <p className={styles.eventsInfo}>{str}</p>
+      }
 
       return data.events.map((k) => Event(k))
     }}
@@ -53,12 +60,12 @@ Event.propTypes = {
 }
 
 const Calendar = () => (
-  <Fragment>
+  <section>
     <h2 className={styles.headTitle}>Upcoming Events</h2>
     <div className={styles.cEvents}>
       <Events />
     </div>
-  </Fragment>
+  </section>
 )
 
 export default Calendar

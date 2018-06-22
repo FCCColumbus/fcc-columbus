@@ -58,7 +58,7 @@ const Slack = () => {
   return (
     <Mutation mutation={SLACK_INVITE}>
       {(createSlackInvite, { data, loading, error }) => (
-        <div className={styles.container}>
+        <section className={styles.container}>
           <div className={styles.logos}>
             <img className={styles.fcccLogo} src="/images/fccc-logo.png" alt="" />
             <div className={styles.plus} />
@@ -111,7 +111,7 @@ const Slack = () => {
               </p>
             </div>
           </form>
-        </div>
+        </section>
       )}
     </Mutation>
   )

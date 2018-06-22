@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styles from './styles.scss'
 
 const Resources = () => (
-  <div className={styles.links}>
+  <section className={styles.links}>
     <div className={styles.wrap}>
       <div className={styles.title}>
         <h2>Useful Links</h2>
@@ -93,7 +93,7 @@ const Resources = () => (
         </div>
       </div>
     </div>
-  </div>
+  </section>
 )
 
 export default Resources

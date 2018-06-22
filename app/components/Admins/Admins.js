@@ -36,7 +36,7 @@ Card.propTypes = {
 }
 
 const Admins = ({ admins }) => (
-  <div className={styles.admins}>
+  <section className={styles.admins}>
     <div className={styles.wrap}>
       <div className={styles.title}>
         <h2>Meet the Admins</h2>
@@ -45,7 +45,7 @@ const Admins = ({ admins }) => (
         {sortArrayByName(admins).map((k) => <Fragment key={k.name.last + k.name.first}>{Card(k)}</Fragment>)}
       </ul>
     </div>
-  </div>
+  </section>
 )
 
 Admins.propTypes = {

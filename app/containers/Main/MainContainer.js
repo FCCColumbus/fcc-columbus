@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { NavigationContainer } from 'containers'
@@ -9,10 +9,10 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
+      <Fragment>
         <NavigationContainer />
-        <div className={styles.innerContainer}>{this.props.children}</div>
-      </div>
+        <div className={styles.container}>{this.props.children}</div>
+      </Fragment>
     )
   }
 }
