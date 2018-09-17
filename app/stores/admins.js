@@ -35,6 +35,15 @@ const admins = [
     url: 'https://www.linkedin.com/in/sarahlillybruland',
     image: 'images/sarah.jpg',
   },
+  {
+    name: {
+      first: 'Amy',
+      last: 'Bedinghaus',
+    },
+    title: 'Application Developer',
+    url: 'https://www.linkedin.com/in/amyngbedinghaus/',
+    image: 'images/amy.jpg',
+  },
 ]
 
 export default admins

@@ -29,7 +29,7 @@
 
 .admin {
   display: flex;
-  width: 25%;
+  width: calc(100% / 3);
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 30px;
