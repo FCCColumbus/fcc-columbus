@@ -5,15 +5,13 @@
 // ------------------
 
 .container {
-  margin: 70px auto 0 auto;
-  width: 100%;
-  // max-width: 1440px;
-}
-
-.innerContainer {
-  margin: 0 auto;
+  display: flex;
   width: 90%;
   max-width: 1440px;
+  height: auto;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 // ------------------
@@ -21,18 +19,13 @@
 // ------------------
 
 @media screen and (max-width: 960px) {
-
 }
 
 @media screen and (max-width: 680px) {
-
 }
 
 @media screen and (max-width: 580px) {
-
 }
 
 @media screen and (max-width: 480px) {
-
 }
-

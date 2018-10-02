@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import styles from './styles.scss'
 
 const Resources = () => (
-  <div className={styles.links}>
+  <section className={styles.links}>
     <div className={styles.wrap}>
       <div className={styles.title}>
         <h2>Useful Links</h2>
       </div>
       <div className={styles.item}>
-        <Link to='https://www.facebook.com/groups/free.code.camp.columbus/' target='_blank' rel='noopener noreferrer'>
+        <Link to="https://www.facebook.com/groups/free.code.camp.columbus/" target="_blank" rel="noopener noreferrer">
           <div className={styles.logo}>
             <i className={`${styles.icon} fa fa-fw fa-facebook-square`} />
           </div>
@@ -19,7 +19,7 @@ const Resources = () => (
         </div>
       </div>
       <div className={styles.item}>
-        <Link to='https://www.twitter.com/fcccolumbus' target='_blank' rel='noopener noreferrer'>
+        <Link to="https://www.twitter.com/fcccolumbus" target="_blank" rel="noopener noreferrer">
           <div className={styles.logo}>
             <i className={`${styles.icon} fa fa-fw fa-twitter`} />
           </div>
@@ -29,7 +29,7 @@ const Resources = () => (
         </div>
       </div>
       <div className={styles.item}>
-        <Link to='https://www.freecodecamp.com/' target='_blank' rel='noopener noreferrer'>
+        <Link to="https://www.freecodecamp.com/" target="_blank" rel="noopener noreferrer">
           <div className={styles.logo}>
             <i className={`${styles.icon} fa fa-fw fa-free-code-camp`} />
           </div>
@@ -39,7 +39,7 @@ const Resources = () => (
         </div>
       </div>
       <div className={styles.item}>
-        <Link to='http://forum.freecodecamp.com/' target='_blank' rel='noopener noreferrer'>
+        <Link to="http://forum.freecodecamp.com/" target="_blank" rel="noopener noreferrer">
           <div className={styles.logo}>
             <i className={`${styles.icon} fa fa-fw fa-comments-o`} />
           </div>
@@ -49,7 +49,7 @@ const Resources = () => (
         </div>
       </div>
       <div className={styles.item}>
-        <Link to='https://www.twitch.tv/fcccolumbus' target='_blank' rel='noopener noreferrer'>
+        <Link to="https://www.twitch.tv/fcccolumbus" target="_blank" rel="noopener noreferrer">
           <div className={styles.logo}>
             <i className={`${styles.icon} fa fa-fw fa-twitch`} />
           </div>
@@ -59,7 +59,7 @@ const Resources = () => (
         </div>
       </div>
       <div className={styles.item}>
-        <Link to='https://www.youtube.com/channel/UC6qdwVNZzr0dkQEF7SdsoAg' target='_blank' rel='noopener noreferrer'>
+        <Link to="https://www.youtube.com/channel/UC6qdwVNZzr0dkQEF7SdsoAg" target="_blank" rel="noopener noreferrer">
           <div className={styles.logo}>
             <i className={`${styles.icon} fa fa-fw fa-youtube`} />
           </div>
@@ -69,7 +69,7 @@ const Resources = () => (
         </div>
       </div>
       <div className={styles.item}>
-        <Link to='https://github.com/FCCColumbus' target='_blank' rel='noopener noreferrer'>
+        <Link to="https://github.com/FCCColumbus" target="_blank" rel="noopener noreferrer">
           <div className={styles.logo}>
             <i className={`${styles.icon} fa fa-fw fa-github`} />
           </div>
@@ -79,7 +79,11 @@ const Resources = () => (
         </div>
       </div>
       <div className={styles.item}>
-        <Link to='https://drive.google.com/folderview?id=0B52DpJWs0V6GVjl5OS1SdnZ3T0E&usp=sharing' target='_blank' rel='noopener noreferrer'>
+        <Link
+          to="https://drive.google.com/folderview?id=0B52DpJWs0V6GVjl5OS1SdnZ3T0E&usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className={styles.logo}>
             <i className={`${styles.icon} fa fa-fw fa-book`} />
           </div>
@@ -89,7 +93,7 @@ const Resources = () => (
         </div>
       </div>
     </div>
-  </div>
+  </section>
 )
 
 export default Resources
