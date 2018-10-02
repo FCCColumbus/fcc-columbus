@@ -1,35 +1,71 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { List } from 'immutable'
-
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
 import styles from './styles.scss'
 
-const Calendar = ({ events }) => ([
-  <h2 key='title' className={styles.headTitle}>Upcoming Events</h2>,
-    <div key='body' className={styles.cEvents}>{events.size > 0
-        ? events.map((eventCard, i) => (
-          <div key={eventCard.get('id')} className={styles.eventsCard}>
-            <Link className={styles.link} to={eventCard.get('url')} target='_blank'>
-              <h2 className={styles.eventsCardDate}>
-                Date: {eventCard.get('date')}
-              </h2>
-              <img
-                src={eventCard.getIn(['logo', 'src'])}
-                alt={eventCard.getIn(['logo', 'alt'])} />
-              <h2 className={styles.eventsCardTitle}>
-                {eventCard.getIn(['name', 'text'])}
-              </h2>
-            </Link>
-          </div>
-        ))
-        : <div>No Events to Display</div>}
-      </div>,
-]
+const Events = () => (
+  <Query
+    query={gql`
+      {
+        events {
+          name
+          url
+          start
+          end
+          free
+          logo
+        }
+      }
+    `}
+  >
+    {({ loading, error, data }) => {
+      if (loading || error || !data.events.length) {
+        let str = 'No events are scheduled at this time.'
+
+        if (loading) str = 'loading...'
+        if (error)
+          str = 'An error has occured while fetching our events. Feel free to report this issue to a group admin.'
+
+        return <p className={styles.eventsInfo}>{str}</p>
+      }
+
+      return data.events.map((k) => Event(k))
+    }}
+  </Query>
 )
 
-Calendar.propTypes = {
-  events: PropTypes.instanceOf(List).isRequired,
+const Event = ({ name, url, start, logo }) => {
+  const date = new Date(start)
+
+  return (
+    <div key={name} className={styles.eventsCard}>
+      <Link className={styles.link} to={url} target="_blank">
+        <h2 className={styles.eventsCardDate}>
+          Date: {date.getMonth() + 1}-{date.getDate()}-{date.getFullYear()}
+        </h2>
+        <img className={styles.logo} src={logo} alt={name} />
+        <h2 className={styles.eventsCardTitle}>{name}</h2>
+      </Link>
+    </div>
+  )
 }
+
+Event.propTypes = {
+  name: PropTypes.string,
+  url: PropTypes.string,
+  start: PropTypes.string,
+  logo: PropTypes.string,
+}
+
+const Calendar = () => (
+  <section>
+    <h2 className={styles.headTitle}>Upcoming Events</h2>
+    <div className={styles.cEvents}>
+      <Events />
+    </div>
+  </section>
+)
 
 export default Calendar

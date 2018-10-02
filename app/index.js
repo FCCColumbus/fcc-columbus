@@ -1,26 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
 
-import { isProd } from 'helpers/utils'
-import * as reducers from 'redux/modules'
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from 'react-apollo'
+
 import getRoutes from 'config/routes'
 
 import 'font-awesome/css/font-awesome.min.css'
 import 'sharedStyles/theme.scss'
 
-const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+const client = new ApolloClient({
+  uri: 'https://graphql.fcccolumbus.com/graphql',
+})
 
-const store = createStore(
-  combineReducers(reducers),
-  composeEnhancers(applyMiddleware(thunk))
-)
-
-ReactDOM.render(
-  <Provider store={store}>
-    {getRoutes(store)}
-  </Provider>,
-  document.getElementById('app')
-)
+ReactDOM.render(<ApolloProvider client={client}>{getRoutes()}</ApolloProvider>, document.getElementById('app'))

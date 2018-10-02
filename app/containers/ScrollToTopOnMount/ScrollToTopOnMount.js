@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
 class ScrollToTopOnMount extends Component {
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     const { hash } = window.location
 
     if (this.props.location !== prevProps.location) {
@@ -15,7 +15,7 @@ class ScrollToTopOnMount extends Component {
     }
   }
 
-  hashLinkScroll (hash) {
+  hashLinkScroll(hash) {
     setTimeout(() => {
       const id = hash.replace('#', '')
       const element = document.getElementById(id)
@@ -24,7 +24,7 @@ class ScrollToTopOnMount extends Component {
         element.scrollIntoView()
       }
 
-      let scrolledY = window.scrollY
+      const scrolledY = window.scrollY
 
       if (scrolledY) {
         window.scroll(0, scrolledY)
@@ -32,12 +32,8 @@ class ScrollToTopOnMount extends Component {
     }, 0)
   }
 
-  render () {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    )
+  render() {
+    return <Fragment>{this.props.children}</Fragment>
   }
 }
 

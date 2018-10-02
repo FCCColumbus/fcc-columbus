@@ -1,12 +1,7 @@
-import React, { Component } from 'react'
-import { Admins } from '../../components'
+import React from 'react'
+import { Admins } from 'components'
+import { AdminsStore } from 'stores'
 
-class AdminsContainer extends Component {
-  render () {
-    return (
-      <Admins />
-    )
-  }
-}
+const AdminsContainer = () => <Admins admins={AdminsStore} />
 
 export default AdminsContainer
