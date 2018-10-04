@@ -42,7 +42,9 @@ const Admins = ({ admins }) => (
         <h2>Meet the Admins</h2>
       </div>
       <ul className={styles.wrap}>
-        {sortArrayByName(admins).map((k) => <Fragment key={k.name.last + k.name.first}>{Card(k)}</Fragment>)}
+        {sortArrayByName(admins).map((k) => (
+          <Fragment key={k.name.last + k.name.first}>{Card(k)}</Fragment>
+        ))}
       </ul>
     </div>
   </section>
