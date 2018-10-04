@@ -11,7 +11,8 @@ const Navigation = ({ links, menu, mobileActive, handleMobile }) => (
         <div className={styles.logoWrap}>
           <Link to="/" onClick={(e) => handleMobile(e, true)}>
             <div className={styles.logo}>
-              FreeCodeCamp<i className="fa fa-free-code-camp" />
+              FreeCodeCamp
+              <i className="fa fa-free-code-camp" />
             </div>
           </Link>
         </div>
