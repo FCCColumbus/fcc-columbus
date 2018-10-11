@@ -5,7 +5,8 @@ import { Mutation, Query } from 'react-apollo'
 
 import styles from './styles.scss'
 
-function handleInputRef(node, data) {
+export function handleInputRef(node, data) {
+  /* istanbul ignore else */
   if (data && data.createSlackInvite.status) {
     node.value = ''
   }
@@ -21,7 +22,7 @@ const SLACK_INVITE = gql`
     }
   }
 `
-const GetUsers = () => (
+export const GetUsers = () => (
   <Query
     query={gql`
       {
@@ -34,7 +35,8 @@ const GetUsers = () => (
       }
     `}
   >
-    {({ error, data }) => {
+    {/* istanbul ignore next */
+    ({ error, data }) => {
       if (error) return 'error'
 
       const active = data.slack ? data.slack.users.active : 0
@@ -57,7 +59,8 @@ const Slack = () => {
 
   return (
     <Mutation mutation={SLACK_INVITE}>
-      {(createSlackInvite, { data, loading, error }) => (
+      {/* istanbul ignore next */
+      (createSlackInvite, { data, loading, error }) => (
         <section className={styles.container}>
           <div className={styles.logos}>
             <img className={styles.fcccLogo} src="/images/fccc-logo.png" alt="" />

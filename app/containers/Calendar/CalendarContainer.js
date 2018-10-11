@@ -1,12 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Calendar } from 'components'
 
-class CalendarContainer extends Component {
-  componentDidMount() {}
-
-  render() {
-    return <Calendar />
-  }
-}
+const CalendarContainer = () => <Calendar />
 
 export default CalendarContainer
