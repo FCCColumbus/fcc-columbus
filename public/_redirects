@@ -1,1 +1,2 @@
-/*    /index.html   200
+/api/* https://graphql.fcccolumbus.com/:splat    200! # API Proxy
+/*    /index.html 200 # SPA redirect
