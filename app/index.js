@@ -10,7 +10,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import 'sharedStyles/theme.scss'
 
 const client = new ApolloClient({
-  uri: 'https://graphql.fcccolumbus.com/graphql',
+  uri: '/api/graphql',
 })
 
 ReactDOM.render(<ApolloProvider client={client}>{getRoutes()}</ApolloProvider>, document.getElementById('app'))
