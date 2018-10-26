@@ -47,7 +47,7 @@ export const Event = ({ name, url, start, logo }) => {
         <h2 className={styles.eventsCardDate}>
           Date: {date.getMonth() + 1}-{date.getDate()}-{date.getFullYear()}
         </h2>
-        <img className={styles.logo} src={logo} alt={name} />
+        <img className={styles.logo} src={logo || 'images/event-default.jpg'} alt={name} />
         <h2 className={styles.eventsCardTitle}>{name}</h2>
       </Link>
     </div>
