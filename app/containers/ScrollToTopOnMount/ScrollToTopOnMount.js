@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
-class ScrollToTopOnMount extends Component {
+export class ScrollToTopOnMount extends Component {
+  /* istanbul ignore next */
   componentDidUpdate(prevProps) {
     const { hash } = window.location
 
@@ -15,6 +16,7 @@ class ScrollToTopOnMount extends Component {
     }
   }
 
+  /* istanbul ignore next */
   hashLinkScroll(hash) {
     setTimeout(() => {
       const id = hash.replace('#', '')

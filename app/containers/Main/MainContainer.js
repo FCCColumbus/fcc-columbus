@@ -4,9 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { NavigationContainer } from 'containers'
 import styles from './styles.scss'
 
-class MainContainer extends Component {
-  componentDidMount() {}
-
+// eslint-disable-next-line react/prefer-stateless-function
+export class MainContainer extends Component {
   render() {
     return (
       <Fragment>
