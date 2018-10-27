@@ -1,11 +1,5 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb",
-    "prettier",
-    "prettier/react"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaversion": 6,
@@ -34,11 +28,7 @@
     "allow-parens": 0,
     "no-return-assign": 0,
     "no-unused-vars": "warn",
-    "object-curly-spacing": [
-      "error",
-      "always",
-      { "arraysInObjects": true, "objectsInObjects": true }
-    ],
+    "object-curly-spacing": ["error", "always", { "arraysInObjects": true, "objectsInObjects": true }],
     "new-cap": [2, { "capIsNew": false, "newIsCap": true }],
     "no-class-assign": 0,
     "no-nested-ternary": 0,
@@ -53,7 +43,8 @@
     "react/no-unused-prop-types": 0,
     "class-methods-use-this": 0,
     "react/require-default-props": 0,
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-named-as-default": 0
   },
   "settings": {
     "import/resolver": {

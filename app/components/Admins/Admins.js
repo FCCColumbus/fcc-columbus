@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import styles from './styles.scss'
 
-const sortArrayByName = (arr) =>
+export const sortArrayByName = (arr) =>
   arr.sort((a, b) => {
     a = a.name.last + a.name.first
     b = b.name.last + b.name.first
@@ -14,7 +14,7 @@ const sortArrayByName = (arr) =>
     return 0
   })
 
-const Card = ({ name, title, url, image }) => (
+export const Card = ({ name, title, url, image }) => (
   <li className={styles.admin}>
     <div className={styles.name}>
       {name.first} {name.last}
@@ -42,7 +42,9 @@ const Admins = ({ admins }) => (
         <h2>Meet the Admins</h2>
       </div>
       <ul className={styles.wrap}>
-        {sortArrayByName(admins).map((k) => <Fragment key={k.name.last + k.name.first}>{Card(k)}</Fragment>)}
+        {sortArrayByName(admins).map((k) => (
+          <Fragment key={k.name.last + k.name.first}>{Card(k)}</Fragment>
+        ))}
       </ul>
     </div>
   </section>

@@ -64,9 +64,9 @@ const Signin = () => (
               </label>
 
               <div className={styles.userTerms}>
-                <input name="terms" id="termsCheck" value="1" type="checkbox" />
                 <label className={styles.terms} htmlFor="termsCheck">
-                  I accept the <Link to="/#">Terms and Conditions</Link>
+                  <input name="terms" id="termsCheck" value="1" type="checkbox" />I accept the{' '}
+                  <Link to="/#">Terms and Conditions</Link>
                 </label>
               </div>
 

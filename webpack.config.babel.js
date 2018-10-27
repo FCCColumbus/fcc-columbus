@@ -167,7 +167,7 @@ const developmentConfig = {
     },
     proxy: {
       '/api': {
-        target: '',
+        target: 'https://graphql.fcccolumbus.com/',
         secure: false,
         changeOrigin: true,
         pathRewrite: { '/api': '' },

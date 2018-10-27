@@ -5,7 +5,8 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import styles from './styles.scss'
 
-const Events = () => (
+/* istanbul ignore next */
+export const Events = () => (
   <Query
     query={gql`
       {
@@ -20,7 +21,8 @@ const Events = () => (
       }
     `}
   >
-    {({ loading, error, data }) => {
+    {/* istanbul ignore next */
+    ({ loading, error, data }) => {
       if (loading || error || !data.events.length) {
         let str = 'No events are scheduled at this time.'
 
@@ -36,7 +38,7 @@ const Events = () => (
   </Query>
 )
 
-const Event = ({ name, url, start, logo }) => {
+export const Event = ({ name, url, start, logo }) => {
   const date = new Date(start)
 
   return (
@@ -45,7 +47,7 @@ const Event = ({ name, url, start, logo }) => {
         <h2 className={styles.eventsCardDate}>
           Date: {date.getMonth() + 1}-{date.getDate()}-{date.getFullYear()}
         </h2>
-        <img className={styles.logo} src={logo} alt={name} />
+        <img className={styles.logo} src={logo || 'images/event-default.jpg'} alt={name} />
         <h2 className={styles.eventsCardTitle}>{name}</h2>
       </Link>
     </div>

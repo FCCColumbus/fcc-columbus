@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 import { Navigation } from 'components'
 
-class NavigationContainer extends Component {
+export class NavigationContainer extends Component {
   constructor() {
     super()
     this.state = {
@@ -29,8 +29,11 @@ class NavigationContainer extends Component {
       ],
       menu: 'Menu',
     }
+
+    this.handleMobile = this.handleMobile.bind(this)
   }
 
+  /* istanbul ignore next */
   componentDidMount() {
     this.props.history.listen((location, action) => {
       if (action === 'POP') {
@@ -39,6 +42,7 @@ class NavigationContainer extends Component {
     })
   }
 
+  /* istanbul ignore next */
   handleMobile(e, close) {
     if (close && !this.state.mobileActive) {
       return
@@ -55,7 +59,7 @@ class NavigationContainer extends Component {
         links={this.state.links}
         menu={this.state.menu}
         mobileActive={this.state.mobileActive}
-        handleMobile={(e, close) => this.handleMobile(e, close)}
+        handleMobile={this.handleMobile}
       />
     )
   }

@@ -1,31 +1,34 @@
 {
   "name": "fccc",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "private": true,
   "description": "FreeCodeCamp Columbus website",
   "main": "index.js",
   "license": "MIT",
   "repository": "https://github.com/FCCColumbus/F3C_Website",
   "scripts": {
-    "start": "yarn dev:start",
+    "start": "npm run dev:start",
     "dev:start": "nodemon --watch webpack.config.babel.js --exec \"webpack-dev-server\"",
     "prod:build": "rimraf lib dist && babel app -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
-    "serve": "yarn prod:build && serve ./dist -s",
+    "serve": "npm run prod:build && serve ./dist -s",
     "lint": "eslint app webpack.config.babel.js --ext .js,.jsx",
     "fix": "eslint app webpack.config.babel.js --ext .js,.jsx --fix",
     "lint:css": "stylelint ./app/**/*.scss",
-    "format": "yarn format:css && yarn format:js",
+    "format": "npm run format:css && npm run format:js",
     "format:css": "prettier-stylelint --write -q \"app/sharedStyles/**/*.scss\"",
     "format:js": "prettier --write app/**/*.js webpack.config.babel.js",
     "stylelint-find-unused-rules": "stylelint-find-rules --config .stylelintrc",
     "eslint-check": "eslint --print-config ./.eslintrc | eslint-config-prettier-check",
-    "test": "yarn lint && jest --coverage",
+    "test": "npm run lint && jest --coverage",
+    "test:watch": "NODE_ENV=test jest --watch",
     "precommit": "lint-staged",
-    "predeploy": "yarn prod:build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run prod:build",
+    "deploy": "gh-pages -d dist",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "engines": {
-    "yarn": ">=1.0.2"
+    "npm": ">=6.4.x"
   },
   "browserslist": [
     "> 1%"
@@ -38,11 +41,11 @@
     "font-awesome": "^4.7.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
-    "react": "16",
+    "react": "^16.5.2",
     "react-apollo": "^2.1.4",
-    "react-dom": "16",
+    "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
@@ -73,6 +76,8 @@
     "coveralls": "^3.0.1",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.9",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -93,9 +98,12 @@
     "happypack": "^4.0.1",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^4.0.0",
     "inline-manifest-webpack-plugin": "^3.0.1",
+    "istanbul": "^0.4.5",
     "jest": "^22.1.4",
+    "jest-environment-jsdom-global": "^1.1.0",
     "lint-staged": "^6.1.0",
     "node-sass": "^4.7.2",
     "nodemon": "^1.14.11",
@@ -121,9 +129,54 @@
     "webpack-bundle-analyzer": "^2.9.2",
     "webpack-chunk-hash": "^0.5.0",
     "webpack-dev-server": "^2.11.1",
-    "webpack-manifest-plugin": "^1.3.2"
+    "webpack-manifest-plugin": "^1.3.2",
+    "@storybook/react": "^3.4.11",
+    "@storybook/addon-actions": "^3.4.11",
+    "@storybook/addon-links": "^3.4.11",
+    "@storybook/addons": "^3.4.11",
+    "babel-runtime": "^6.26.0"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>tests.js",
+    "testEnvironment": "jest-environment-jsdom-global",
+    "testURL": "http://localhost:3000/",
+    "globals": {
+      "PRODUCTION": false
+    },
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/lib/"
+    ],
+    "collectCoverage": false,
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "app/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__",
+      "/lib/",
+      "app/index.js",
+      "app/config/",
+      "app/helpers/utils.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "json",
+      "json-summary",
+      "lcov"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
     "moduleFileExtensions": [
       "js",
       "json"
@@ -135,13 +188,13 @@
   },
   "lint-staged": {
     "app/**/*.js": [
-      "yarn fix",
-      "yarn format:js",
+      "npm run fix",
+      "npm run format:js",
       "git add"
     ],
     "app/sharedStyles/**/*.scss": [
-      "yarn format:css",
-      "yarn lint:css",
+      "npm run format:css",
+      "npm run lint:css",
       "git add"
     ]
   }
