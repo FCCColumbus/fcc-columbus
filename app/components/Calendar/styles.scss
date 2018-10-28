@@ -11,7 +11,7 @@
   flex-wrap: wrap; // stylelint-disable-line
   align-items: center;
   justify-content: space-between;
-  margin-top: 100px;
+  margin-top: 75px;
   line-height: 1.5;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .headTitle {
-  margin-top: 200px;
+  margin-top: 125px;
   font-size: 2em;
   text-align: center;
 }
@@ -96,6 +96,12 @@
 }
 
 @media screen and (max-width: 680px) {
+  .headTitle {
+    margin-top: 100px;
+  }
+  .cEvents {
+    margin-top: 50px;
+  }
 }
 
 @media screen and (max-width: 580px) {
