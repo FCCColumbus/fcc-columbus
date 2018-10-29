@@ -69,7 +69,7 @@
 }
 
 .logo {
-  width: auto;
+  width: 100%;
   max-width: 400px;
   height: auto;
 }
@@ -77,12 +77,6 @@
 .eventsInfo {
   width: 100%;
   text-align: center;
-}
-
-@media (max-width: 800px) {
-  .events__card {
-    width: 80vw;
-  }
 }
 
 // ------------------
@@ -109,12 +103,19 @@
     font-size: 1.1em;
   }
 
-  .img {
-    width: 70vw;
-  }
-
   .eventsCard {
     border: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .eventsCard:first-child {
+    padding-top: 0;
+  }
+
+  .img {
+    width: 70vw;
   }
 }
 
