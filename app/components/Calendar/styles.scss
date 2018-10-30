@@ -83,31 +83,32 @@
 //  BREAKPOINTS
 // ------------------
 
-@media screen and (max-width: 960px) {
+@include lg {
   .cEvents {
     justify-content: center;
   }
 }
 
-@media screen and (max-width: 680px) {
+@include md {
   .headTitle {
     margin-top: 100px;
   }
+
   .cEvents {
     margin-top: 50px;
   }
 }
 
-@media screen and (max-width: 580px) {
+@include sm {
   .cEvents {
     font-size: 1.1em;
   }
 
   .eventsCard {
-    border: none;
-    margin: 0;
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;    
+    border: none;
+    margin: 0;    
   }
 
   .eventsCard:first-child {
@@ -119,5 +120,5 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@include xs {
 }
