@@ -81,17 +81,19 @@ const Slack = () => {
             }}
           >
             <label htmlFor="email" className={styles.label}>
+              <span className={styles.visuallyhidden}>Email: </span>
               <input
                 id="email"
                 name="email"
                 className={styles.input}
-                type="text"
+                type="email"
                 placeholder="you@yourdomain.com"
                 autoComplete="off"
                 ref={(node) => (emailInput = handleInputRef(node, data))}
               />
             </label>
             <label htmlFor="name" className={styles.label}>
+              <span className={styles.visuallyhidden}>First Name: </span>
               <input
                 id="firstName"
                 name="name"
