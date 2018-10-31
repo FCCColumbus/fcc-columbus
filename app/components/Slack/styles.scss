@@ -11,7 +11,7 @@ $submit: #d15265;
   display: flex;
   width: 100%;
   height: auto;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$navHeight});
   flex-direction: column;
   justify-content: center;
 }
@@ -179,11 +179,9 @@ $submit: #d15265;
     display: flex;
     width: 100%;
     height: auto;
-    min-height: 100vh;
-    flex-direction: column;
+    min-height: calc(100vh - #{$navHeight});
     justify-content: flex-start;
     padding-top: 35px;
-    margin-top: 50px;
   }
 }
 

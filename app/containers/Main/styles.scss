@@ -9,7 +9,7 @@
   width: 90%;
   max-width: 1440px;
   height: auto;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$navHeight});
   flex-direction: column;
   margin: 0 auto;
 }

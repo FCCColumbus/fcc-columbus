@@ -4,12 +4,16 @@
 //  CONTENT
 // ------------------
 
+header {
+  height: $navHeight;
+}
+
 .nav {
   position: fixed;
   z-index: 100;
   top: 0;
   width: 100%;
-  height: 50px;
+  height: $navHeight;
   background: $dark-green;
 }
 
