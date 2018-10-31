@@ -167,13 +167,13 @@ $submit: #d15265;
 //  BREAKPOINTS
 // ------------------
 
-@media screen and (max-width: 960px) {
+@include lg {
 }
 
-@media screen and (max-width: 680px) {
+@include md {
 }
 
-@media screen and (max-width: 580px) {
+@include sm {
   .container {
     position: relative;
     display: flex;
@@ -187,5 +187,5 @@ $submit: #d15265;
   }
 }
 
-@media screen and (max-width: 480px) {
+@include xs {
 }
