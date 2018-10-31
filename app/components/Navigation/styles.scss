@@ -137,7 +137,7 @@
 //  BREAKPOINTS
 // ------------------
 
-@media screen and (max-width: 960px) {
+@include lg {
   .links {
     width: 100px;
   }
@@ -151,14 +151,14 @@
   }
 }
 
-@media screen and (max-width: 680px) {
+@include md {
   .logo {
     font-size: 24px;
   }
 }
 
-@media screen and (max-width: 580px) {
+@include sm {
 }
 
-@media screen and (max-width: 480px) {
+@include xs {
 }
