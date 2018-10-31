@@ -71,6 +71,11 @@ const Slack = () => {
             Join <span className={styles.bold}>FreeCodeCamp Columbus</span> on Slack.
           </h1>
           <GetUsers />
+          <p className={styles.slackDescription}>
+            {
+              "Slack is a free chat client used by lots of tech industry businesses, so it's a good idea to get familiar with it while you're in the process of learning to code. It's great for developers because it has features to make sharing code easy. Our group uses Slack to ask and answer coding questions, showcase projects, share jobs, advertise our events, and just chat. Slack will help you connect with other Free Code Camp Columbus members quickly and easily."
+            }
+          </p>
           <form
             className={styles.innerContainer}
             onSubmit={(e) => {
