@@ -11,7 +11,7 @@
 
 .icon {
   color: $dark-green;
-  font-size: 10em !important;
+  font-size: 4em !important;
 }
 
 .wrap {
@@ -55,9 +55,8 @@
 .name {
   width: 100%;
 
-  & h2 {
+  & h3 {
     padding: 20px 0;
-    font-size: 24px;
     text-align: center;
   }
 }
@@ -68,7 +67,7 @@
 
 @include lg {
   .item {
-    width: 50%;
+    width: 25%;
   }
 
   .title h2 {

@@ -15,7 +15,7 @@ const Resources = () => (
           </div>
         </Link>
         <div className={styles.name}>
-          <h2>Facebook Group</h2>
+          <h3>Facebook Group</h3>
         </div>
       </div>
       <div className={styles.item}>
@@ -25,7 +25,7 @@ const Resources = () => (
           </div>
         </Link>
         <div className={styles.name}>
-          <h2>Twitter</h2>
+          <h3>Twitter</h3>
         </div>
       </div>
       <div className={styles.item}>
@@ -35,7 +35,7 @@ const Resources = () => (
           </div>
         </Link>
         <div className={styles.name}>
-          <h2>Free Code Camp</h2>
+          <h3>Free Code Camp</h3>
         </div>
       </div>
       <div className={styles.item}>
@@ -45,7 +45,7 @@ const Resources = () => (
           </div>
         </Link>
         <div className={styles.name}>
-          <h2>FCC Forum</h2>
+          <h3>FCC Forum</h3>
         </div>
       </div>
       <div className={styles.item}>
@@ -55,7 +55,7 @@ const Resources = () => (
           </div>
         </Link>
         <div className={styles.name}>
-          <h2>Twitch Channel</h2>
+          <h3>Twitch Channel</h3>
         </div>
       </div>
       <div className={styles.item}>
@@ -65,7 +65,7 @@ const Resources = () => (
           </div>
         </Link>
         <div className={styles.name}>
-          <h2>Youtube Channel</h2>
+          <h3>Youtube Channel</h3>
         </div>
       </div>
       <div className={styles.item}>
@@ -75,7 +75,7 @@ const Resources = () => (
           </div>
         </Link>
         <div className={styles.name}>
-          <h2>Group GitHub</h2>
+          <h3>Group GitHub</h3>
         </div>
       </div>
       <div className={styles.item}>
@@ -89,7 +89,7 @@ const Resources = () => (
           </div>
         </Link>
         <div className={styles.name}>
-          <h2>Online Library</h2>
+          <h3>Online Library</h3>
         </div>
       </div>
     </div>
