@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styles from './styles.scss'
 
 const Resources = () => (
@@ -46,26 +45,6 @@ const Resources = () => (
         </a>
         <div className={styles.name}>
           <h3>FCC Forum</h3>
-        </div>
-      </div>
-      <div className={styles.item}>
-        <a href="https://www.twitch.tv/fcccolumbus" target="_blank" rel="noopener noreferrer">
-          <div className={styles.logo}>
-            <i className={`${styles.icon} fa fa-fw fa-twitch`} />
-          </div>
-        </a>
-        <div className={styles.name}>
-          <h3>Twitch Channel</h3>
-        </div>
-      </div>
-      <div className={styles.item}>
-        <a href="https://www.youtube.com/channel/UC6qdwVNZzr0dkQEF7SdsoAg" target="_blank" rel="noopener noreferrer">
-          <div className={styles.logo}>
-            <i className={`${styles.icon} fa fa-fw fa-youtube`} />
-          </div>
-        </a>
-        <div className={styles.name}>
-          <h3>Youtube Channel</h3>
         </div>
       </div>
       <div className={styles.item}>
