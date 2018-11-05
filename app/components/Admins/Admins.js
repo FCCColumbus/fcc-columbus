@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import styles from './styles.scss'
 
@@ -19,11 +18,11 @@ export const Card = ({ name, title, url, image }) => (
     <div className={styles.name}>
       {name.first} {name.last}
     </div>
-    <Link to={url} target="_blank" rel="noopener noreferrer" title={`Go to ${name.first}'s LinkedIn Profile`}>
+    <a href={url} target="_blank" rel="noopener noreferrer" title={`Go to ${name.first}'s LinkedIn Profile`}>
       <div className={styles.image}>
         <img src={image} alt={`admin, ${name.first}.`} className={styles.face} />
       </div>
-    </Link>
+    </a>
     <div className={styles.job}>{title}</div>
   </li>
 )
