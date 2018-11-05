@@ -25,7 +25,11 @@ $saxmono: 'saxmono', monospace;
 
 @import 'style-guide/animations';
 
+//  ACCESSIBILITY
 // ------------------
+
+@import 'style-guide/accessibility';
+
 //  BREAKPOINTS
 // ------------------
 
@@ -38,4 +42,6 @@ $saxmono: 'saxmono', monospace;
 @import 'base/mixins';
 @import 'style-guide/buttons';
 
-$containerPadding: 85px;
+$containerPadding: 35px;
+
+$navHeight: 50px;
