@@ -88,6 +88,7 @@ upstream  https://github.com/FCCColumbus/F3C_Website.git (push)
 #### Git
 * [git documentation](https://git-scm.com/book/en/v2)
 * [Udemy git course](https://www.udacity.com/course/ud775) ~~ [Intro video](https://youtu.be/Ytux4IOAR_s)
+* [Harvard CSS50 lecture on Github/Github flow and TravisCI](https://www.youtube.com/watch?v=2A7nVdAoqqk)
 #### IDEs
 * [VSCode](https://code.visualstudio.com/)
 * [https://www.reddit.com/r/learnprogramming/wiki/tools](https://www.reddit.com/r/learnprogramming/wiki/tools)
