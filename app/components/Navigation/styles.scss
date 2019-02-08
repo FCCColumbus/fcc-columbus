@@ -4,12 +4,16 @@
 //  CONTENT
 // ------------------
 
+header {
+  height: $navHeight;
+}
+
 .nav {
   position: fixed;
   z-index: 100;
   top: 0;
   width: 100%;
-  height: 50px;
+  height: $navHeight;
   background: $dark-green;
 }
 
@@ -137,7 +141,7 @@
 //  BREAKPOINTS
 // ------------------
 
-@media screen and (max-width: 960px) {
+@include lg {
   .links {
     width: 100px;
   }
@@ -151,14 +155,14 @@
   }
 }
 
-@media screen and (max-width: 680px) {
+@include md {
   .logo {
     font-size: 24px;
   }
 }
 
-@media screen and (max-width: 580px) {
+@include sm {
 }
 
-@media screen and (max-width: 480px) {
+@include xs {
 }

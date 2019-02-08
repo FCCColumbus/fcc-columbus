@@ -11,7 +11,7 @@ $submit: #d15265;
   display: flex;
   width: 100%;
   height: auto;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$navHeight});
   flex-direction: column;
   justify-content: center;
 }
@@ -158,29 +158,32 @@ $submit: #d15265;
   color: $alert;
 }
 
+.slackDescription {
+  max-width: 575px;
+  margin: 25px auto 0 auto;
+}
+
 // ------------------
 //  BREAKPOINTS
 // ------------------
 
-@media screen and (max-width: 960px) {
+@include lg {
 }
 
-@media screen and (max-width: 680px) {
+@include md {
 }
 
-@media screen and (max-width: 580px) {
+@include sm {
   .container {
     position: relative;
     display: flex;
     width: 100%;
     height: auto;
-    min-height: 100vh;
-    flex-direction: column;
+    min-height: calc(100vh - #{$navHeight});
     justify-content: flex-start;
     padding-top: 35px;
-    margin-top: 50px;
   }
 }
 
-@media screen and (max-width: 480px) {
+@include xs {
 }

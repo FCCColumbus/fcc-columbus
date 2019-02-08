@@ -11,7 +11,7 @@
   flex-wrap: wrap; // stylelint-disable-line
   align-items: center;
   justify-content: space-between;
-  margin-top: 100px;
+  margin-top: 75px;
   line-height: 1.5;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .headTitle {
-  margin-top: 200px;
+  margin-top: 75px;
   font-size: 2em;
   text-align: center;
 }
@@ -69,7 +69,7 @@
 }
 
 .logo {
-  width: auto;
+  width: 100%;
   max-width: 400px;
   height: auto;
 }
@@ -79,38 +79,46 @@
   text-align: center;
 }
 
-@media (max-width: 800px) {
-  .events__card {
-    width: 80vw;
-  }
-}
-
 // ------------------
 //  BREAKPOINTS
 // ------------------
 
-@media screen and (max-width: 960px) {
+@include lg {
   .cEvents {
     justify-content: center;
   }
 }
 
-@media screen and (max-width: 680px) {
+@include md {
+  .headTitle {
+    margin-top: 50px;
+  }
+
+  .cEvents {
+    margin-top: 50px;
+  }
 }
 
-@media screen and (max-width: 580px) {
+@include sm {
   .cEvents {
     font-size: 1.1em;
+  }
+
+  .eventsCard {
+    padding-right: 0;
+    padding-left: 0;    
+    border: none;
+    margin: 0;    
+  }
+
+  .eventsCard:first-child {
+    padding-top: 0;
   }
 
   .img {
     width: 70vw;
   }
-
-  .eventsCard {
-    border: none;
-  }
 }
 
-@media screen and (max-width: 480px) {
+@include xs {
 }

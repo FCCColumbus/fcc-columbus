@@ -57,14 +57,14 @@ body {
 //  BREAKPOINTS
 // ------------------
 
-@media screen and (max-width: 960px) {
+@include lg {
 }
 
-@media screen and (max-width: 680px) {
+@include md {
 }
 
-@media screen and (max-width: 580px) {
+@include sm {
 }
 
-@media screen and (max-width: 480px) {
+@include xs {
 }
