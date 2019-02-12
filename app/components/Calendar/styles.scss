@@ -119,47 +119,6 @@
     width: 70vw;
   }
 }
-:root {
-  --color1: green;
-  --color2: #6E6E05;
-  --color3: #FFCB00;
-}
-@keyframes pulse {
-from {
-  transform: scale3d(1, 1, 1) skew(0deg);
-  color: var(--color1);
-  filter: drop-shadow(0px 0px 0px  black);
-}
-25% {
-  color:var(--color2);
-/*   transform: skew(-5deg); */
-  transform: scale3d(1.05, 1.02, 1.02) skew(-1deg);
-}
 
-50% {
-  transform: scale3d(1.1, 1.02, 1.02) skew(0deg);
-/*     transform: skew(0deg); */
-  color: var(--color3);
-  filter: drop-shadow(0px 0px 2px  black);
-}
-75%{
-  color:var(--color2);
-/*     transform: skew(5deg); */
-  transform: scale3d(1.05, 1.02, 1.02) skew(1deg);
-}
-100% {
-  color:var(--color1);
-  transform: scale3d(1, 1, 1) skew(0deg);
-  filter: drop-shadow(0px 0px 0px  black);
-  
-}
-}
-#flame{
-/*   animation-timing-function: linear; */
-animation:pulse 1.5s linear infinite;
-
-max-width: 100px;
-color: green;
-}
 @include xs {
 }
