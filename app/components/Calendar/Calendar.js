@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import styles from './styles.scss'
@@ -51,13 +50,13 @@ export const Event = ({ name, url, start, logo }) => {
 
   return (
     <div key={name} className={styles.eventsCard}>
-      <Link className={styles.link} to={url} target="_blank">
+      <a className={styles.link} href={url} target="_blank" rel="noopener noreferrer">
         <h2 className={styles.eventsCardDate}>
           Date: {date.getMonth() + 1}-{date.getDate()}-{date.getFullYear()}
         </h2>
         <img className={styles.logo} src={logo || 'images/event-default.jpg'} alt={name} />
         <h2 className={styles.eventsCardTitle}>{name}</h2>
-      </Link>
+      </a>
     </div>
   )
 }
