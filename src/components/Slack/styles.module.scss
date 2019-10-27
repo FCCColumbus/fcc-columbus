@@ -1,0 +1,189 @@
+@import 'sharedStyles/variables';
+
+$submit: #d15265;
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - #{$navHeight});
+  flex-direction: column;
+  justify-content: center;
+}
+
+.innerContainer {
+  @include gridPadding;
+
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.label,
+.input {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.label,
+.input,
+.submit {
+  width: 100%;
+  max-width: 350px;
+  height: 42px;
+  border-radius: 0;
+}
+
+.status {
+  display: flex;
+  margin: 35px 0 0;
+
+  & p:first-child {
+    margin-right: 15px;
+  }
+}
+
+.input {
+  transition: $dTransition;
+
+  &:focus {
+    border-color: $submit;
+  }
+}
+
+.submit {
+  background: $submit;
+  border-radius: 0;
+  color: $solidWhite;
+  font-weight: 700;
+  transition: $dTransition;
+
+  &:hover {
+    background: darken($submit, 10%);
+  }
+}
+
+.disable {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fcccLogo,
+.slackLogo {
+  width: auto;
+  max-width: calc(50% - 35px);
+  height: auto;
+  max-height: 200px;
+}
+
+.plus {
+  position: relative;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  margin: 0 25px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $submit;
+    content: '';
+  }
+
+  &::before {
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    top: 50%;
+    width: 20px;
+    height: 2px;
+    transform: translateY(-50%);
+  }
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  margin-top: 35px;
+  font-size: 24px;
+}
+
+.bold {
+  color: $green;
+  font-size: 28px;
+}
+
+.info {
+  margin-top: 10px;
+  line-height: 16px;
+}
+
+.totalOnline,
+.online {
+  font-size: 18px;
+  font-weight: 700 !important;
+}
+
+.totalOnline {
+  // color: $green;
+}
+
+.online {
+  color: $submit;
+}
+
+.error {
+  color: $alert;
+}
+
+.slackDescription {
+  max-width: 575px;
+  margin: 25px auto 0 auto;
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@include lg {
+}
+
+@include md {
+}
+
+@include sm {
+  .container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - #{$navHeight});
+    justify-content: flex-start;
+    padding-top: 35px;
+  }
+}
+
+@include xs {
+}

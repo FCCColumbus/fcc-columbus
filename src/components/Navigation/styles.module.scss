@@ -1,0 +1,168 @@
+@import 'sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+header {
+  height: $navHeight;
+}
+
+.nav {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: $navHeight;
+  background: $dark-green;
+}
+
+.wrap {
+  display: flex;
+  width: 95%;
+  height: 100%;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+}
+
+.navLink {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  color: $solidWhite;
+  outline: none;
+  text-decoration: none;
+
+  &:hover {
+    background: $headerLinkHover;
+    color: $black;
+  }
+}
+
+.logoWrap,
+.links {
+  display: flex;
+  width: 100%;
+}
+
+.logoWrap {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.logo {
+  color: $solidWhite;
+  font-family: $saxmono;
+  font-size: 30px;
+  text-decoration: none;
+
+  & i {
+    margin-left: 10px;
+  }
+}
+
+.links {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.link {
+  margin: 0 20px;
+}
+
+.menu {
+  display: none;
+  width: 80px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $solidWhite;
+  border-radius: 4px;
+  color: $black;
+  cursor: pointer;
+
+  &:hover {
+    background: $headerLinkHover;
+    color: $black;
+  }
+}
+
+.dropdown {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-top: 50px;
+  background: $dark-green;
+  transition: height 0.4s;
+
+  &Wrap {
+    display: flex;
+    height: 100%;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  &Link {
+    display: flex;
+    min-height: 60px;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-items: center;
+    justify-content: center;
+    color: $solidWhite;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    transition: height 0.4s;
+
+    &:hover {
+      background: $headerLinkHover;
+      color: $black;
+    }
+  }
+}
+
+.show {
+  overflow: hidden;
+  height: 240px !important;
+  padding-top: 50px;
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@include lg {
+  .links {
+    width: 100px;
+  }
+
+  .link {
+    display: none;
+  }
+
+  .menu {
+    display: flex !important;
+  }
+}
+
+@include md {
+  .logo {
+    font-size: 24px;
+  }
+}
+
+@include sm {
+}
+
+@include xs {
+}
