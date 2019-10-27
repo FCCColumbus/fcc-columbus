@@ -1,0 +1,124 @@
+@import 'sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.cEvents {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap; // stylelint-disable-line
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 75px;
+  line-height: 1.5;
+}
+
+.link {
+  color: inherit;
+}
+
+.headTitle {
+  margin-top: 75px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.eventsCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid $dark-green;
+  // width: 100%;
+  margin: 2%;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.eventsCardDescription {
+  width: 100%;
+  margin-left: 20px;
+}
+
+.eventsCardDate {
+  color: $dark-green;
+  font-size: 1.1em;
+}
+
+.eventsCardTitle {
+  font-size: 1.3em;
+  text-decoration: none;
+}
+
+.clickable {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: $black;
+  opacity: 0;
+}
+
+.marginTop {
+  margin-top: 200px;
+}
+
+.logo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.eventsInfo {
+  width: 100%;
+  text-align: center;
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@include lg {
+  .cEvents {
+    justify-content: center;
+  }
+}
+
+@include md {
+  .headTitle {
+    margin-top: 50px;
+  }
+
+  .cEvents {
+    margin-top: 50px;
+  }
+}
+
+@include sm {
+  .cEvents {
+    font-size: 1.1em;
+  }
+
+  .eventsCard {
+    padding-right: 0;
+    padding-left: 0;    
+    border: none;
+    margin: 0;    
+  }
+
+  .eventsCard:first-child {
+    padding-top: 0;
+  }
+
+  .img {
+    width: 70vw;
+  }
+}
+
+@include xs {
+}

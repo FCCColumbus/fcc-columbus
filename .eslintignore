@@ -1,0 +1,7 @@
+__mock__
+build/
+coverage/
+node_modules/
+serviceWorker.js
+setupProxy.js
+setupTests.js

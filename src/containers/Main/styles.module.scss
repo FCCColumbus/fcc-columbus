@@ -1,0 +1,31 @@
+@import 'sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.container {
+  display: flex;
+  width: 90%;
+  max-width: 1440px;
+  height: auto;
+  min-height: calc(100vh - #{$navHeight});
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@include lg {
+}
+
+@include md {
+}
+
+@include sm {
+}
+
+@include xs {
+}

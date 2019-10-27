@@ -1,0 +1,30 @@
+@import 'sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@include lg {
+}
+
+@include md {
+}
+
+@include sm {
+}
+
+@include xs {
+}
