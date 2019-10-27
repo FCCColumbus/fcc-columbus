@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-
 import { Navigation } from 'components';
 
 export class NavigationContainer extends Component {
@@ -11,20 +10,12 @@ export class NavigationContainer extends Component {
       mobileActive: false,
       links: [
         {
-          href: '/members',
-          title: 'Members',
-        },
-        {
           href: '/slack',
           title: 'Slack',
         },
         {
           href: '/calendar',
           title: 'Calendar',
-        },
-        {
-          href: '/signin',
-          title: 'Sign In',
         },
       ],
       menu: 'Menu',
