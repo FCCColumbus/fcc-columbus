@@ -1,7 +1,7 @@
 {
   "name": "fcc-columbus",
   "description": "FreeCodeCamp Columbus website",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "private": true,
   "repository": "https://github.com/FCCColumbus/F3C_Website",
   "author": "freecodecamp columbus contributors",
