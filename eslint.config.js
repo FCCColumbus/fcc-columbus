@@ -65,18 +65,13 @@ module.exports = {
     'react-hooks/rules-of-hooks': ERROR,
     'react/destructuring-assignment': OFF,
     'react/jsx-filename-extension': [WARN, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-props-no-spreading': OFF,
   },
   overrides: [
     {
       files: ['setupProxy.js'],
       rules: {
         'func-names': OFF,
-      },
-    },
-    {
-      files: ['*test.js'],
-      rules: {
-        'react/jsx-props-no-spreading': OFF,
       },
     },
   ],
