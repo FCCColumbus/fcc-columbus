@@ -1,0 +1,75 @@
+@import 'sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.container {
+  width: 100%;
+  margin: 50px 0;
+}
+
+.wrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.title {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  & h2 {
+    font-size: 30px;
+  }
+}
+
+.icon {
+  margin-right: 5px;
+  color: $black;
+}
+
+.contributor {
+  display: flex;
+  max-width: 120px;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border: 3px solid $grey;
+  border-radius: 50%;
+}
+
+.userLink {
+  margin-top: 5px;
+  color: $general;
+}
+
+.contributions {
+  margin-top: 5px;
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@include lg {
+}
+
+@include md {
+}
+
+@include sm {
+}
+
+@include xs {
+}
