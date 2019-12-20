@@ -120,9 +120,9 @@ const Slack = () => {
             placeholder="First Name"
             autoComplete="off"
             ref={(node) => {
-              emailInput = handleInputRef(node, data);
+              nameInput = handleInputRef(node, data);
 
-              return emailInput;
+              return nameInput;
             }}
           />
         </label>
