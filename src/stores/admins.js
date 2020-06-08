@@ -10,15 +10,6 @@ const admins = [
   },
   {
     name: {
-      first: 'Dan',
-      last: 'Stockham',
-    },
-    title: 'Software Developer',
-    url: 'https://linkedin.com/in/danstockham',
-    image: 'images/dan.jpg',
-  },
-  {
-    name: {
       first: 'Kevin',
       last: 'Bruland',
     },
@@ -40,9 +31,9 @@ const admins = [
       first: 'Amy',
       last: 'Bedinghaus',
     },
-    title: 'Application Developer',
+    title: 'Software Engineer',
     url: 'https://www.linkedin.com/in/amyngbedinghaus/',
-    image: 'images/amy.jpg',
+    image: 'images/amy_headshot.png',
   },
 ];
 
