@@ -4,6 +4,7 @@ import AdminsContainer from '../Admins/AdminsContainer';
 import CtaContainer from '../Cta/CtaContainer';
 import ResourcesContainer from '../Resources/ResourcesContainer';
 import Contributors from '../../components/Contributors';
+import NetlifyBadge from '../../components/NetlifyBadge';
 import styles from './styles.module.scss';
 
 const HomeContainer = () => (
@@ -17,6 +18,8 @@ const HomeContainer = () => (
     <CtaContainer />
     <hr className={styles.break} />
     <ResourcesContainer />
+    <hr className={styles.break} />
+    <NetlifyBadge />
   </>
 );
 

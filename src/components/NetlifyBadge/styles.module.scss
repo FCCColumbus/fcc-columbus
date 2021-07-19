@@ -1,0 +1,25 @@
+@import 'sharedStyles/variables';
+
+// ------------------
+//  CONTENT
+// ------------------
+
+.container {
+  margin: 50px auto;
+}
+
+// ------------------
+//  BREAKPOINTS
+// ------------------
+
+@include lg {
+}
+
+@include md {
+}
+
+@include sm {
+}
+
+@include xs {
+}

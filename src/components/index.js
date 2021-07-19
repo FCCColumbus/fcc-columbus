@@ -1,9 +1,10 @@
-export { default as Navigation } from './Navigation/Navigation';
-export { default as Hero } from './Hero/Hero';
 export { default as Admins } from './Admins/Admins';
-export { default as Cta } from './Cta/Cta';
-export { default as Resources } from './Resources/Resources';
-export { default as ComingSoon } from './ComingSoon/ComingSoon';
-export { default as Signin } from './Signin/Signin';
 export { default as Calendar } from './Calendar/Calendar';
+export { default as ComingSoon } from './ComingSoon/ComingSoon';
+export { default as Cta } from './Cta/Cta';
+export { default as Hero } from './Hero/Hero';
+export { default as Navigation } from './Navigation/Navigation';
+export { default as NetlifyBadge } from './NetlifyBadge/NetlifyBadge';
+export { default as Resources } from './Resources/Resources';
+export { default as Signin } from './Signin/Signin';
 export { default as Slack } from './Slack/Slack';
