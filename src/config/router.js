@@ -5,8 +5,6 @@ import {
   HomeContainer,
   ScrollToTopOnMount,
   MembersContainer,
-  SlackContainer,
-  CalendarContainer,
   SigninContainer,
 } from '../containers';
 
@@ -17,8 +15,8 @@ const Routes = () => (
         <Switch>
           <Route exact path="/" component={HomeContainer} />
           <Route exact path="/members" component={MembersContainer} />
-          <Route exact path="/slack" component={SlackContainer} />
-          <Route exact path="/calendar" component={CalendarContainer} />
+          {/* <Route exact path="/slack" component={SlackContainer} /> */}
+          {/* <Route exact path="/calendar" component={CalendarContainer} /> */}
           <Route exact path="/signin" component={SigninContainer} />
           <Route render={() => <Redirect to="/" />} />
         </Switch>

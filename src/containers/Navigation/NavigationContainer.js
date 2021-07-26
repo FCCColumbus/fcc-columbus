@@ -9,14 +9,14 @@ export class NavigationContainer extends Component {
     this.state = {
       mobileActive: false,
       links: [
-        {
-          href: '/slack',
-          title: 'Slack',
-        },
-        {
-          href: '/calendar',
-          title: 'Calendar',
-        },
+        // {
+        //   href: '/slack',
+        //   title: 'Slack',
+        // },
+        // {
+        //   href: '/calendar',
+        //   title: 'Calendar',
+        // },
       ],
       menu: 'Menu',
     };

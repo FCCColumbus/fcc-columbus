@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 const Hero = () => (
@@ -11,9 +10,15 @@ const Hero = () => (
       <div className={styles.logo}>
         <img className={styles.image} src="images/fccc-logo.png" alt="Free Code Camp Logo" />
       </div>
-      <Link className={styles.joinNow} to="/slack">
-        Join Our Slack Community!
-      </Link>
+      <button className={styles.joinNow} type="button">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://join.slack.com/t/freecodecampcolumbus/shared_invite/zt-thc7o8xs-ELyMJyaPWAeuNyI3vaETBA"
+        >
+          Join Our Slack Community!
+        </a>
+      </button>
     </div>
   </section>
 );
